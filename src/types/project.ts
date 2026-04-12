@@ -74,6 +74,10 @@ export type ProjectManual = {
   technologies: ProjectTechnology[];
   differentiators: string[];
   impactPoints: string[];
+  architectureNotes?: {
+    title: string;
+    points: string[];
+  };
   metrics: string[];
   repositoryUrl: string;
   repositoryLabel?: string;

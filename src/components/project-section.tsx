@@ -85,6 +85,22 @@ export function ProjectSection({ project, index }: ProjectSectionProps) {
           </div>
         </div>
 
+        {project.architectureNotes ? (
+          <div className="subtle-card rounded-[1.7rem] p-5">
+            <p className="text-muted text-sm font-semibold uppercase tracking-[0.22em]">
+              {project.architectureNotes.title}
+            </p>
+            <ul className="mt-4 grid gap-3 lg:grid-cols-3">
+              {project.architectureNotes.points.map((point) => (
+                <li key={point} className="text-soft flex gap-3 text-sm leading-7">
+                  <span className="mt-3 h-2 w-2 shrink-0 rounded-full bg-sky-400" />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
         <div className="project-section-footer grid gap-4">
           <div className="flex flex-wrap items-center gap-3">
             {project.technologies.map((technology) => (

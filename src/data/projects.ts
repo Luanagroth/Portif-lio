@@ -61,6 +61,14 @@ export const manualProjects: ProjectManual[] = [
       "Mostra capacidade de estruturar frontend, backend e dados em torno de um problema real de uso.",
       "Cria uma base técnica pronta para crescer como plataforma de mobilidade entre cidades.",
     ],
+    architectureNotes: {
+      title: "Arquitetura e decisões",
+      points: [
+        "Frontend em Next.js com componentes focados em leitura rápida da consulta e navegação mais acessível.",
+        "Backend em Express com Prisma para organizar entidades como linhas, horários, tarifas e pontos de parada.",
+        "Modelagem pensada para começar simples, mas preparada para evoluir com novas cidades, filtros e mapas.",
+      ],
+    },
     metrics: ["Linhas e horários", "Tarifas e paradas", "Mapa interativo"],
     repositoryUrl: "https://github.com/Luanagroth/CityLine",
     repositoryLabel: "Ver código",
