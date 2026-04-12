@@ -1,8 +1,18 @@
 # Luana Groth | Portfólio
 
+[![Deploy Vercel](https://img.shields.io/badge/deploy-vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://luana-groth-portfolio.vercel.app)
+![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-19-149ECA?style=flat-square&logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Vitest](https://img.shields.io/badge/tests-Vitest-6E9F18?style=flat-square&logo=vitest&logoColor=white)
+![Status](https://img.shields.io/badge/status-online-16a34a?style=flat-square)
+
 Portfólio profissional desenvolvido para apresentar a atuação de Luana Groth em desenvolvimento front-end e full stack, com foco em clareza visual, experiência do usuário, organização técnica e apresentação estratégica de projetos reais.
 
-## Visão geral
+🔎 **Deploy ao vivo:** [luana-groth-portfolio.vercel.app](https://luana-groth-portfolio.vercel.app)
+
+## 🌐 Visão geral
 
 O projeto foi estruturado como uma vitrine profissional na web, com home editorial, seção de projetos em destaque e página dedicada para aprofundamento dos cases.
 
@@ -13,7 +23,7 @@ A proposta é comunicar:
 - visão de produto
 - consistência entre conteúdo, layout e execução
 
-## Stack utilizada
+## 🧰 Stack utilizada
 
 - Next.js 16 com App Router
 - React 19
@@ -23,7 +33,7 @@ A proposta é comunicar:
 - Testing Library
 - ESLint
 
-## Principais seções
+## 🧩 Principais seções
 
 - `Hero`: apresentação principal com posicionamento profissional
 - `Sobre mim`: trajetória, formação e direcionamento
@@ -32,7 +42,7 @@ A proposta é comunicar:
 - `Página /projetos`: vitrine completa com todos os projetos
 - `Contato`: canais profissionais para networking e oportunidades
 
-## Projetos em destaque
+## 🚀 Projetos em destaque
 
 Atualmente a home prioriza dois projetos principais:
 
@@ -41,7 +51,7 @@ Atualmente a home prioriza dois projetos principais:
 
 A página `/projetos` mantém a listagem completa com todos os cases do portfólio.
 
-## Estrutura do projeto
+## 🗂️ Estrutura do projeto
 
 ```text
 src/
@@ -78,7 +88,7 @@ src/
     project.ts
 ```
 
-## Como executar localmente
+## 💻 Como executar localmente
 
 ```bash
 npm install
@@ -91,7 +101,7 @@ Depois, acesse:
 http://localhost:3000
 ```
 
-## Scripts disponíveis
+## ⚙️ Scripts disponíveis
 
 - `npm run dev`: inicia o ambiente de desenvolvimento
 - `npm run build`: gera a build de produção
@@ -100,7 +110,7 @@ http://localhost:3000
 - `npm run test`: roda os testes com Vitest
 - `npm run test:watch`: roda os testes em modo observação
 
-## Qualidade e organização
+## ✅ Qualidade e organização
 
 - componentização por responsabilidade
 - separação entre dados, tipos, lógica e UI
@@ -108,7 +118,7 @@ http://localhost:3000
 - testes básicos para home e página de projetos
 - estrutura pronta para deploy na Vercel
 
-## Validação do projeto
+## 🧪 Validação do projeto
 
 Validação executada com sucesso usando:
 
@@ -118,7 +128,7 @@ npm run test
 npm run build
 ```
 
-## Objetivo do portfólio
+## 🎯 Objetivo do portfólio
 
 Este projeto foi pensado para funcionar como presença profissional na web, reunindo:
 
@@ -127,13 +137,13 @@ Este projeto foi pensado para funcionar como presença profissional na web, reun
 - projetos apresentados como produto, e não apenas como links
 - base técnica sólida para evolução contínua
 
-## Contato
+## 📬 Contato
 
 - LinkedIn: [linkedin.com/in/luanagroth](https://www.linkedin.com/in/luanagroth/)
 - GitHub: [github.com/Luanagroth](https://github.com/Luanagroth)
 - E-mail: [luanaeulalia56@gmail.com](mailto:luanaeulalia56@gmail.com)
 
-## Autora
+## 👩‍💻 Autora
 
 **Luana Groth**  
 Desenvolvedora em evolução com foco em interfaces modernas, produto digital e qualidade técnica.
