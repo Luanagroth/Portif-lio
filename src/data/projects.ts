@@ -71,6 +71,7 @@ export const manualProjects: ProjectManual[] = [
     },
     metrics: ["Linhas e horários", "Tarifas e paradas", "Mapa interativo"],
     repositoryUrl: "https://github.com/Luanagroth/CityLine",
+    demoUrl: "https://frontend-luanas-projects-b69a8269.vercel.app",
     repositoryLabel: "Ver código",
     readmeUrl: "https://github.com/Luanagroth/CityLine",
   },
