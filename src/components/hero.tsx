@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { profile } from "@/data/profile";
 
 const proofPoints = ["4+ projetos reais", "CI/CD • Testes • Deploy"];
@@ -50,9 +51,9 @@ export function Hero() {
           </div>
 
           <div className="flex flex-col gap-4 sm:flex-row">
-            <a className="button-primary" href="#projetos">
+            <Link className="button-primary" href="/projetos">
               Ver projetos
-            </a>
+            </Link>
           </div>
         </div>
       </div>
