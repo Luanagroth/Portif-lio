@@ -130,7 +130,13 @@ export function ProjectSection({ project, index }: ProjectSectionProps) {
               ) : null}
             </div>
 
-            <div className="project-section-actions grid gap-3 sm:grid-cols-3 xl:ml-auto xl:min-w-[25rem]">
+            <div
+              className={`project-section-actions grid gap-3 sm:grid-cols-2 ${
+                project.managementUrl
+                  ? "xl:min-w-[34rem] xl:grid-cols-4"
+                  : "xl:min-w-[25rem] xl:grid-cols-3"
+              } xl:ml-auto`}
+            >
               <a
                 href={project.github.htmlUrl}
                 target="_blank"
@@ -151,6 +157,16 @@ export function ProjectSection({ project, index }: ProjectSectionProps) {
               ) : (
                 <span className="button-disabled">Demo privada ou indisponível</span>
               )}
+              {project.managementUrl ? (
+                <a
+                  href={project.managementUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="button-secondary"
+                >
+                  {project.managementLabel ?? "Ver gestão"}
+                </a>
+              ) : null}
               <a
                 href={project.readmeUrl}
                 target="_blank"
@@ -161,6 +177,19 @@ export function ProjectSection({ project, index }: ProjectSectionProps) {
               </a>
             </div>
           </div>
+          {project.managementAccess ? (
+            <div className="project-management-access flex flex-wrap items-center gap-2">
+              <span className="text-muted text-xs font-semibold uppercase tracking-[0.18em]">
+                Acesso gestão
+              </span>
+              <span className="chip-muted rounded-full px-3 py-1 text-xs font-medium">
+                Login: {project.managementAccess.login}
+              </span>
+              <span className="chip-muted rounded-full px-3 py-1 text-xs font-medium">
+                Senha: {project.managementAccess.password}
+              </span>
+            </div>
+          ) : null}
         </div>
       </div>
     </article>

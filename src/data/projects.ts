@@ -174,7 +174,7 @@ export const manualProjects: ProjectManual[] = [
       "Aplicação de produtividade pessoal com foco em rotina, organização e constância. O FlowTrack centraliza tarefas, hábitos diários, metas da semana, horário local e um ciclo de Pomodoro com persistência local em uma experiência mais clara e madura.",
     professionalDescription:
       "A versão mais recente reforça leitura de produto: dashboard reorganizado, hierarquia visual refinada, placeholders mais orientativos, notas opcionais nas entidades principais e Pomodoro com notificações nativas e controle de som. O resultado mostra evolução real de UX sem perder disciplina técnica.",
-    featured: true,
+    featured: false,
     preview: {
       kind: "image",
       src: "/images/flowtrack-dashboard.png",
@@ -216,6 +216,129 @@ export const manualProjects: ProjectManual[] = [
     repositoryUrl: "https://github.com/Luanagroth/flowtrack",
     demoUrl: "https://flowtrack-seven.vercel.app",
     readmeUrl: "https://github.com/Luanagroth/flowtrack/blob/main/README.md",
+  },
+  {
+    slug: "essenza-bistro",
+    name: "Essenza Bistrô",
+    category: "Micro Frontends",
+    status: {
+      label: "Projeto publicado",
+      tone: "active",
+    },
+    shortDescription:
+      "Plataforma de operação para restaurante com painel interno, site público, comandas, reservas, cardápio e backend modular.",
+    summary:
+      "Sistema completo para o Essenza Bistrô, conectando a experiência pública do cliente com a operação interna do restaurante por meio de micro frontends, API REST e persistência local em SQLite.",
+    professionalDescription:
+      "O projeto explora uma arquitetura mais próxima de produto real: frontends separados por responsabilidade, integração via Webpack Module Federation, backend em Express com Prisma, deploy em Vercel e Railway e fluxos de negócio para reservas, comandas, cardápio, relatórios e currículos.",
+    featured: true,
+    preview: {
+      kind: "gallery",
+      images: [
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/Login-interno.png"),
+          alt: "Tela de login administrativo do Essenza Bistrô.",
+          title: "Login interno",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/dashboard.png"),
+          alt: "Dashboard interno do Essenza Bistrô com indicadores de operação.",
+          title: "Painel geral",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/mapa-mesas.png"),
+          alt: "Mapa de mesas do Essenza Bistrô com status de atendimento.",
+          title: "Mapa de mesas",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/comanda.png"),
+          alt: "Comanda aberta do Essenza Bistrô com itens selecionados.",
+          title: "Comanda aberta",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/comanda-pagamento.png"),
+          alt: "Tela de pagamento e fechamento de comanda do Essenza Bistrô.",
+          title: "Pagamento",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/gestao-cardapio.png"),
+          alt: "Gestão de cardápio do Essenza Bistrô com produtos e categorias.",
+          title: "Gestão de cardápio",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/relatorios.png"),
+          alt: "Tela de relatórios operacionais do Essenza Bistrô.",
+          title: "Relatórios",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/curriculos.png"),
+          alt: "Painel de currículos recebidos pelo site público do Essenza Bistrô.",
+          title: "Currículos",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/publico-home-1.png"),
+          alt: "Primeira parte da home pública do Essenza Bistrô.",
+          title: "Home pública",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/publico-home-2.png"),
+          alt: "Segunda parte da home pública do Essenza Bistrô.",
+          title: "Cardápio público",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/publico-reservas.png"),
+          alt: "Formulário público de reservas do Essenza Bistrô.",
+          title: "Reservas",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/publico-curriculos-contato.png"),
+          alt: "Tela pública de currículos e contato do Essenza Bistrô.",
+          title: "Currículos e contato",
+        },
+      ],
+    },
+    technologies: [
+      { name: "React 18", slug: "react" },
+      { name: "JavaScript", slug: "javascript" },
+      { name: "Webpack 5", slug: "webpack" },
+      { name: "Node.js", slug: "node" },
+      { name: "Express", slug: "express" },
+      { name: "Prisma", slug: "prisma" },
+      { name: "SQLite", slug: "sqlite" },
+      { name: "CSS3", slug: "css" },
+      { name: "Vitest", slug: "vitest" },
+      { name: "Vercel", slug: "vercel" },
+    ],
+    differentiators: [
+      "Separa painel interno, micro frontend de comandas, site público e backend em módulos com responsabilidades claras.",
+      "Integra micro frontends com Webpack Module Federation e contratos compartilhados para reduzir acoplamento.",
+      "Conecta reservas, cardápio, comandas, relatórios e currículos a uma API REST com persistência via Prisma e SQLite.",
+      "Publica frontends na Vercel e backend na Railway, com integração real entre site público e sistema interno.",
+    ],
+    impactPoints: [
+      "Demonstra capacidade de transformar um domínio de negócio completo em uma aplicação modular e navegável.",
+      "Mostra domínio de integração entre múltiplos frontends, backend e banco de dados em um mesmo produto.",
+      "Cria uma base pronta para evoluir com autenticação, histórico operacional, painel de cozinha e deploy de backend.",
+    ],
+    architectureNotes: {
+      title: "Arquitetura em micro frontends",
+      points: [
+        "Container principal orquestra a experiência interna e consome módulos remotos publicados via Module Federation.",
+        "Backend em Express organiza domínios como reservas, pedidos, produtos, categorias, currículos e uploads.",
+        "Shared centraliza contratos, helpers e configurações usadas entre frontends para manter a comunicação consistente.",
+      ],
+    },
+    metrics: ["Module Federation", "API REST", "Vercel + Railway"],
+    repositoryUrl: "https://github.com/Luanagroth/microfrontends-cardapio",
+    demoUrl: "https://microfrontends-cardapio.vercel.app",
+    demoLabel: "Ver site público",
+    managementUrl: "https://microfrontends-cardapio-pvda.vercel.app",
+    managementLabel: "Ver gestão",
+    managementAccess: {
+      login: "admin@essenza.local",
+      password: "admin123",
+    },
+    readmeUrl: "https://github.com/Luanagroth/microfrontends-cardapio/blob/main/README.md",
   },
   {
     slug: "testes-unitarios",

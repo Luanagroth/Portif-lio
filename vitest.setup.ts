@@ -39,6 +39,15 @@ const githubRepositoryResponses = new Map([
     },
   ],
   [
+    "Luanagroth/microfrontends-cardapio",
+    {
+      html_url: "https://github.com/Luanagroth/microfrontends-cardapio",
+      updated_at: "2026-05-22T12:30:00.000Z",
+      language: "JavaScript",
+      stargazers_count: 1,
+    },
+  ],
+  [
     "Luanagroth/Teste_unit-tio_EBAC",
     {
       html_url: "https://github.com/Luanagroth/Teste_unit-tio_EBAC",

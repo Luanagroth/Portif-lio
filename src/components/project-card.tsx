@@ -19,15 +19,23 @@ export function ProjectCard({
   const updatedAt = formatGithubUpdatedAt(project.github.updatedAt);
   const isCityLineHome = featuredLead && project.preview.kind === "panel";
   const isFlowTrackHome = !featuredLead && project.slug === "flowtrack";
-  const visibleDifferentials = project.differentiators.slice(0, isCityLineHome ? 3 : featuredLead ? 4 : 3);
+  const isGalleryHome = project.preview.kind === "gallery";
+  const visibleDifferentials = project.differentiators.slice(
+    0,
+    isCityLineHome ? 3 : isGalleryHome ? 3 : featuredLead ? 4 : 3,
+  );
   const differentialsGridClass = isFlowTrackHome
     ? "sm:grid-cols-3"
+    : isGalleryHome
+      ? ""
     : featuredLead
       ? "sm:grid-cols-2"
       : "sm:grid-cols-2 xl:grid-cols-3";
   const footerBlock = (
     <div
-      className={`home-project-footer grid gap-4 ${isFlowTrackHome ? "xl:col-span-2 xl:mt-1" : ""}`}
+      className={`home-project-footer grid gap-4 ${
+        isFlowTrackHome || isGalleryHome ? "xl:col-span-2 xl:mt-1" : ""
+      }`}
     >
       <div className="flex flex-wrap items-center gap-3">
         {project.technologies.slice(0, featuredLead ? 6 : 4).map((technology) => (
@@ -61,7 +69,7 @@ export function ProjectCard({
         </div>
 
         <div className="xl:ml-auto">
-          <Link className="button-primary w-full sm:w-auto" href={`/projetos#${project.slug}`}>
+          <Link className="button-primary min-w-[8.25rem] whitespace-nowrap" href={`/projetos#${project.slug}`}>
             Ver detalhes
           </Link>
         </div>
@@ -76,12 +84,14 @@ export function ProjectCard({
           ? "xl:grid-cols-1"
           : isFlowTrackHome
             ? "xl:grid-cols-[minmax(24rem,0.92fr)_minmax(0,1.08fr)]"
-            : "xl:grid-cols-[minmax(21rem,0.92fr)_minmax(0,1.08fr)]"
+            : isGalleryHome
+              ? "xl:grid-cols-[minmax(20rem,0.82fr)_minmax(24rem,1.18fr)]"
+              : "xl:grid-cols-[minmax(21rem,0.92fr)_minmax(0,1.08fr)]"
       } xl:p-7 ${
         featuredLead ? "featured-lead-card" : ""
       }`}
     >
-      <div className={`flex h-full flex-col ${isFlowTrackHome ? "justify-start gap-5" : "justify-center"}`}>
+      <div className={`flex h-full flex-col ${isGalleryHome ? "justify-start gap-5" : isFlowTrackHome ? "justify-start gap-5" : "justify-center"}`}>
         <div>
           <div className="flex flex-wrap items-center gap-3">
             {featuredLead ? (
@@ -103,7 +113,9 @@ export function ProjectCard({
           <div className="mt-5 space-y-3">
             <h3
               className={`text-main font-display ${
-                featuredLead
+                isGalleryHome
+                  ? "text-[2.05rem] leading-none sm:text-[2.45rem]"
+                  : featuredLead
                   ? "text-[2.2rem] leading-[0.94] sm:text-[2.9rem]"
                   : "text-[2rem] leading-none sm:text-[2.45rem]"
               }`}
@@ -112,7 +124,9 @@ export function ProjectCard({
             </h3>
             <p
               className={`text-soft ${
-                featuredLead
+                isGalleryHome
+                  ? "max-w-[30rem] text-[0.98rem] leading-7 sm:text-base sm:leading-8"
+                  : featuredLead
                   ? "max-w-[34rem] text-base leading-8 sm:text-[1.04rem]"
                   : "max-w-[30rem] text-[0.98rem] leading-7 sm:text-base sm:leading-8"
               }`}
@@ -122,12 +136,14 @@ export function ProjectCard({
           </div>
         </div>
 
-        {isFlowTrackHome ? (
+        {isFlowTrackHome || isGalleryHome ? (
           <div className={`grid gap-3 ${differentialsGridClass}`}>
             {visibleDifferentials.map((differential) => (
               <div
                 key={differential}
-                className={`subtle-card rounded-[1.35rem] p-4 ${isFlowTrackHome ? "home-flowtrack-card" : ""}`}
+                className={`subtle-card rounded-[1.35rem] p-4 ${
+                  isFlowTrackHome ? "home-flowtrack-card" : isGalleryHome ? "home-gallery-differential-card" : ""
+                }`}
               >
                 <p className="text-soft text-sm leading-7">{differential}</p>
               </div>
@@ -140,28 +156,36 @@ export function ProjectCard({
         <ProjectPreview
           preview={project.preview}
           priority={priority}
-          className={isFlowTrackHome ? "home-project-preview home-flowtrack-preview" : "home-project-preview"}
+          className={
+            isGalleryHome
+              ? "home-project-preview home-gallery-preview"
+              : isFlowTrackHome
+                ? "home-project-preview home-flowtrack-preview"
+                : "home-project-preview"
+          }
         />
       ) : null}
 
-      <div
-        className={`home-project-lower grid gap-4 ${
-          isCityLineHome ? "" : isFlowTrackHome ? "xl:col-start-1 xl:row-start-2" : "xl:col-span-2"
-        }`}
-      >
-        {!isFlowTrackHome ? (
-          <div className={`grid gap-3 ${differentialsGridClass}`}>
-            {visibleDifferentials.map((differential) => (
-              <div
-                key={differential}
-                className={`subtle-card rounded-[1.35rem] p-4 ${isFlowTrackHome ? "home-flowtrack-card" : ""}`}
-              >
-                <p className="text-soft text-sm leading-7">{differential}</p>
-              </div>
-            ))}
-          </div>
-        ) : null}
-      </div>
+      {!isGalleryHome ? (
+        <div
+          className={`home-project-lower grid gap-4 ${
+            isCityLineHome ? "" : isFlowTrackHome ? "xl:col-start-1 xl:row-start-2" : "xl:col-span-2"
+          }`}
+        >
+          {!isFlowTrackHome ? (
+            <div className={`grid gap-3 ${differentialsGridClass}`}>
+              {visibleDifferentials.map((differential) => (
+                <div
+                  key={differential}
+                  className={`subtle-card rounded-[1.35rem] p-4 ${isFlowTrackHome ? "home-flowtrack-card" : ""}`}
+                >
+                  <p className="text-soft text-sm leading-7">{differential}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      ) : null}
 
       {footerBlock}
     </article>

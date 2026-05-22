@@ -40,6 +40,7 @@ A proposta é comunicar:
 - `Habilidades`: stack organizada por grupos de competência
 - `Projetos`: destaque para os cases principais na home
 - `Página /projetos`: vitrine completa com todos os projetos
+- `Galeria de projetos`: carousel de imagens com expansão em tela cheia e controle de zoom para cases com mais evidência visual
 - `Contato`: canais profissionais para networking e oportunidades
 
 ## 🚀 Projetos em destaque
@@ -47,9 +48,16 @@ A proposta é comunicar:
 Atualmente a home prioriza dois projetos principais:
 
 - `CityLine`: produto de mobilidade urbana com foco em consulta de linhas, horários, tarifas e paradas
-- `FlowTrack`: aplicação de produtividade com tarefas, hábitos e foco diário
+- `Essenza Bistrô`: plataforma full-stack para operação de restaurante, com micro frontends, site público, sistema de gestão, backend modular e galeria de telas
 
-A página `/projetos` mantém a listagem completa com todos os cases do portfólio.
+A página `/projetos` mantém a listagem completa com todos os cases do portfólio, incluindo o FlowTrack.
+
+### Acesso ao Essenza Bistrô
+
+- Site público: [microfrontends-cardapio.vercel.app](https://microfrontends-cardapio.vercel.app)
+- Sistema de gestão: [microfrontends-cardapio-pvda.vercel.app](https://microfrontends-cardapio-pvda.vercel.app)
+- Login da gestão: `admin@essenza.local`
+- Senha da gestão: `admin123`
 
 ## 🗂️ Estrutura do projeto
 
@@ -71,6 +79,7 @@ src/
     header-menu.tsx
     hero.tsx
     project-card.tsx
+    project-image-carousel.tsx
     project-page.tsx
     project-preview.tsx
     project-section.tsx

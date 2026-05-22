@@ -20,8 +20,15 @@ describe("Projects page", () => {
     expect(screen.getByRole("heading", { level: 2, name: "Palavri-metro" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Extension Guard" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "FlowTrack" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: "Essenza Bistrô" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: /Testes Unit/i })).toBeInTheDocument();
     expect(screen.getByText("Em desenvolvimento ativo")).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: "Ver código" })).toHaveLength(5);
+    expect(screen.getAllByRole("link", { name: "Ver código" })).toHaveLength(6);
+    expect(screen.getByRole("link", { name: "Ver gestão" })).toHaveAttribute(
+      "href",
+      "https://microfrontends-cardapio-pvda.vercel.app",
+    );
+    expect(screen.getByText("Login: admin@essenza.local")).toBeInTheDocument();
+    expect(screen.getByText("Senha: admin123")).toBeInTheDocument();
   });
 });

@@ -59,6 +59,7 @@ const techStyles: Record<
   },
   vercel: { tint: "from-white to-zinc-400", ring: "border-white/15", label: "V" },
   vite: { tint: "from-fuchsia-400 to-amber-300", ring: "border-fuchsia-300/30", label: "VT" },
+  webpack: { tint: "from-sky-300 to-blue-500", ring: "border-sky-300/30", label: "WP" },
   vitest: { tint: "from-lime-300 to-emerald-400", ring: "border-lime-300/30", label: "VS" },
   zod: { tint: "from-indigo-300 to-violet-400", ring: "border-indigo-300/30", label: "ZD" },
 };

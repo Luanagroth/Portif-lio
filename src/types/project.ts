@@ -18,6 +18,7 @@ export type TechSlug =
   | "typescript"
   | "vercel"
   | "vite"
+  | "webpack"
   | "vitest"
   | "zod";
 
@@ -38,6 +39,14 @@ export type ProjectPreview =
       alt: string;
       width: number;
       height: number;
+    }
+  | {
+      kind: "gallery";
+      images: Array<{
+        src: string;
+        alt: string;
+        title: string;
+      }>;
     }
   | {
       kind: "panel";
@@ -83,6 +92,12 @@ export type ProjectManual = {
   repositoryLabel?: string;
   demoUrl?: string;
   demoLabel?: string;
+  managementUrl?: string;
+  managementLabel?: string;
+  managementAccess?: {
+    login: string;
+    password: string;
+  };
   readmeUrl: string;
 };
 

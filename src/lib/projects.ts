@@ -37,7 +37,9 @@ export async function getProjects(): Promise<Project[]> {
 export async function getFeaturedProjects(): Promise<Project[]> {
   const projects = await getProjects();
 
-  return projects.filter((project) => project.featured);
+  return projects
+    .filter((project) => project.featured)
+    .sort((project) => (project.slug === "essenza-bistro" ? -1 : 0));
 }
 
 export function formatGithubUpdatedAt(updatedAt: string | null) {

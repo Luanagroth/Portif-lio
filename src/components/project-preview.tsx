@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ProjectImageCarousel } from "@/components/project-image-carousel";
 import type { ProjectPreview } from "@/types/project";
 
 type ProjectPreviewProps = {
@@ -123,6 +124,16 @@ export function ProjectPreview({
           </div>
         </div>
       </div>
+    );
+  }
+
+  if (preview.kind === "gallery") {
+    return (
+      <ProjectImageCarousel
+        images={preview.images}
+        priority={priority}
+        className={className}
+      />
     );
   }
 
