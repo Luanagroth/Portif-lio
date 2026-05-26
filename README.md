@@ -47,7 +47,7 @@ A proposta é comunicar:
 
 Atualmente a home prioriza dois projetos principais:
 
-- `CityLine`: produto de mobilidade urbana com foco em consulta de linhas, horários, tarifas e paradas
+- `MOVI`: plataforma pública de mobilidade urbana com linhas, horários, paradas, rotas, ferry boat, mapa interativo e PWA
 - `Essenza Bistrô`: plataforma full-stack para operação de restaurante, com micro frontends, site público, sistema de gestão, backend modular e galeria de telas
 
 A página `/projetos` mantém a listagem completa com todos os cases do portfólio, incluindo o FlowTrack.

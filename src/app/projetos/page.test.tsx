@@ -14,7 +14,7 @@ describe("Projects page", () => {
     expect(
       screen.getByRole("heading", {
         level: 2,
-        name: "CityLine - Mobilidade urbana em um só lugar",
+        name: "MOVI - Plataforma de mobilidade urbana",
       }),
     ).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Palavri-metro" })).toBeInTheDocument();
@@ -22,7 +22,7 @@ describe("Projects page", () => {
     expect(screen.getByRole("heading", { level: 2, name: "FlowTrack" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: "Essenza Bistrô" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { level: 2, name: /Testes Unit/i })).toBeInTheDocument();
-    expect(screen.getByText("Em desenvolvimento ativo")).toBeInTheDocument();
+    expect(screen.getByText("Publicado e em evolução")).toBeInTheDocument();
     expect(screen.getAllByRole("link", { name: "Ver código" })).toHaveLength(6);
     expect(screen.getByRole("link", { name: "Ver gestão" })).toHaveAttribute(
       "href",

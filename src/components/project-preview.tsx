@@ -34,14 +34,14 @@ export function ProjectPreview({
               ))}
             </div>
 
-            <div className="cityline-map-shell cityline-map-shell--showcase">
-              <div className="cityline-map-grid" />
-              <div className="cityline-map-line cityline-map-line--primary" />
-              <div className="cityline-map-line cityline-map-line--secondary" />
-              <div className="cityline-map-line cityline-map-line--accent" />
+            <div className="movi-map-shell movi-map-shell--showcase">
+              <div className="movi-map-grid" />
+              <div className="movi-map-line movi-map-line--primary" />
+              <div className="movi-map-line movi-map-line--secondary" />
+              <div className="movi-map-line movi-map-line--accent" />
 
               {preview.mapLabels?.map((label, index) => (
-                <span key={label} className={`cityline-stop cityline-stop--${(index % 4) + 1}`}>
+                <span key={label} className={`movi-stop movi-stop--${(index % 4) + 1}`}>
                   {label}
                 </span>
               ))}
@@ -72,7 +72,7 @@ export function ProjectPreview({
           </div>
 
           {preview.stats?.length || preview.routes?.length || preview.mapLabels?.length ? (
-            <div className="cityline-editorial grid h-full gap-4 xl:grid-cols-[1.1fr_0.9fr]">
+            <div className="movi-editorial grid h-full gap-4 xl:grid-cols-[1.1fr_0.9fr]">
               <div className="grid gap-3 sm:grid-cols-3 xl:grid-cols-1">
                 {preview.stats?.map((stat) => (
                   <div key={stat.label} className="subtle-card rounded-[1.35rem] p-4">
@@ -84,14 +84,14 @@ export function ProjectPreview({
                 ))}
               </div>
 
-              <div className="cityline-map-shell">
-                <div className="cityline-map-grid" />
-                <div className="cityline-map-line cityline-map-line--primary" />
-                <div className="cityline-map-line cityline-map-line--secondary" />
-                <div className="cityline-map-line cityline-map-line--accent" />
+              <div className="movi-map-shell">
+                <div className="movi-map-grid" />
+                <div className="movi-map-line movi-map-line--primary" />
+                <div className="movi-map-line movi-map-line--secondary" />
+                <div className="movi-map-line movi-map-line--accent" />
 
                 {preview.mapLabels?.map((label, index) => (
-                  <span key={label} className={`cityline-stop cityline-stop--${(index % 4) + 1}`}>
+                  <span key={label} className={`movi-stop movi-stop--${(index % 4) + 1}`}>
                     {label}
                   </span>
                 ))}

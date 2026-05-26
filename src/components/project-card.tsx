@@ -17,12 +17,12 @@ export function ProjectCard({
   featuredLead = false,
 }: ProjectCardProps) {
   const updatedAt = formatGithubUpdatedAt(project.github.updatedAt);
-  const isCityLineHome = featuredLead && project.preview.kind === "panel";
+  const isLeadPanelHome = featuredLead && project.preview.kind === "panel";
   const isFlowTrackHome = !featuredLead && project.slug === "flowtrack";
   const isGalleryHome = project.preview.kind === "gallery";
   const visibleDifferentials = project.differentiators.slice(
     0,
-    isCityLineHome ? 3 : isGalleryHome ? 3 : featuredLead ? 4 : 3,
+    isLeadPanelHome ? 3 : isGalleryHome ? 3 : featuredLead ? 4 : 3,
   );
   const differentialsGridClass = isFlowTrackHome
     ? "sm:grid-cols-3"
@@ -80,7 +80,7 @@ export function ProjectCard({
   return (
     <article
       className={`home-project-card project-spotlight project-shell group grid w-full items-stretch gap-5 overflow-hidden rounded-[2rem] p-5 transition duration-300 hover:-translate-y-1 sm:p-6 ${
-        isCityLineHome
+        isLeadPanelHome
           ? "xl:grid-cols-1"
           : isFlowTrackHome
             ? "xl:grid-cols-[minmax(24rem,0.92fr)_minmax(0,1.08fr)]"
@@ -103,7 +103,7 @@ export function ProjectCard({
               {project.category}
             </span>
             {project.status ? <ProjectStatusBadge status={project.status} /> : null}
-            {(isCityLineHome ? [] : project.metrics).map((metric) => (
+            {(isLeadPanelHome ? [] : project.metrics).map((metric) => (
               <span key={metric} className="metric-pill rounded-full px-3 py-1 text-xs font-medium">
                 {metric}
               </span>
@@ -152,7 +152,7 @@ export function ProjectCard({
         ) : null}
       </div>
 
-      {!isCityLineHome ? (
+      {!isLeadPanelHome ? (
         <ProjectPreview
           preview={project.preview}
           priority={priority}
@@ -169,7 +169,7 @@ export function ProjectCard({
       {!isGalleryHome ? (
         <div
           className={`home-project-lower grid gap-4 ${
-            isCityLineHome ? "" : isFlowTrackHome ? "xl:col-start-1 xl:row-start-2" : "xl:col-span-2"
+            isLeadPanelHome ? "" : isFlowTrackHome ? "xl:col-start-1 xl:row-start-2" : "xl:col-span-2"
           }`}
         >
           {!isFlowTrackHome ? (
