@@ -13,6 +13,18 @@ const CONTACT_ERROR_MESSAGE =
 const CONTACT_CONFIG_ERROR_MESSAGE =
   "O envio de mensagens ainda nao esta configurado no servidor.";
 
+function getProviderErrorMessage(error: unknown) {
+  if (typeof error === "object" && error && "message" in error) {
+    const message = error.message;
+
+    if (typeof message === "string" && message.trim().length > 0) {
+      return message;
+    }
+  }
+
+  return CONTACT_ERROR_MESSAGE;
+}
+
 function getResendClient() {
   const apiKey = process.env.RESEND_API_KEY;
 
@@ -100,7 +112,7 @@ export async function POST(request: Request) {
 
       return NextResponse.json(
         {
-          message: CONTACT_ERROR_MESSAGE,
+          message: getProviderErrorMessage(error),
         },
         { status: 502 },
       );
