@@ -1,0 +1,124 @@
+.compass {
+  position: fixed;
+  right: 30px;
+  bottom: 32px;
+  z-index: 55;
+  width: 112px;
+  height: 112px;
+  pointer-events: none;
+  opacity: 0.96;
+}
+
+.svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter:
+    drop-shadow(0 0 5px rgb(124 92 255 / 0.5))
+    drop-shadow(0 0 12px rgb(76 110 245 / 0.22));
+  animation: compassGlow 5s ease-in-out infinite;
+}
+
+.outerRing {
+  fill: none;
+  stroke: rgba(237, 233, 254, 0.72);
+  stroke-width: 1.2;
+  opacity: 0.82;
+}
+
+.innerRing {
+  fill: none;
+  stroke: rgba(167, 139, 250, 0.44);
+  stroke-width: 0.9;
+  opacity: 0.74;
+}
+
+.axis {
+  fill: none;
+  stroke: rgba(103, 232, 249, 0.28);
+  stroke-width: 0.9;
+  opacity: 0.56;
+}
+
+.primaryPoint {
+  fill: url(#compass-primary);
+  stroke: rgba(237, 233, 254, 0.88);
+  stroke-width: 0.82;
+}
+
+.secondaryPoint {
+  fill: url(#compass-secondary);
+  stroke: rgba(167, 139, 250, 0.74);
+  stroke-width: 0.78;
+}
+
+.diagonalPoint {
+  fill: rgba(79, 124, 255, 0.22);
+  stroke: rgba(237, 233, 254, 0.46);
+  stroke-width: 0.68;
+}
+
+.diagonalPointAlt {
+  fill: rgba(139, 92, 246, 0.2);
+  stroke: rgba(103, 232, 249, 0.42);
+  stroke-width: 0.68;
+}
+
+.label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  fill: #ede9fe;
+}
+
+@keyframes compassGlow {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1180px) {
+  .compass {
+    width: 92px;
+    height: 92px;
+    right: 20px;
+    bottom: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .compass {
+    width: 70px;
+    height: 70px;
+    right: 14px;
+    bottom: 14px;
+    opacity: 0.74;
+  }
+}
+
+@media (max-width: 430px) {
+  .compass {
+    width: 56px;
+    height: 56px;
+    right: 12px;
+    bottom: 12px;
+    opacity: 0.66;
+  }
+}
+
+@media (max-width: 360px) {
+  .compass {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svg {
+    animation: none;
+  }
+}

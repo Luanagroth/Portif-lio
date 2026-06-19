@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 
@@ -42,18 +41,6 @@ export const metadata: Metadata = {
   },
 };
 
-const themeInitScript = `
-  (() => {
-    const storageKey = "portfolio-theme";
-    const root = document.documentElement;
-    const storedTheme = window.localStorage.getItem(storageKey);
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const theme = storedTheme === "light" || storedTheme === "dark" ? storedTheme : systemTheme;
-    root.dataset.theme = theme;
-    root.style.colorScheme = theme;
-  })();
-`;
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -66,9 +53,6 @@ export default function RootLayout({
       className={`${manrope.variable} ${cormorant.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full bg-[--background] text-[--foreground]">
-        <Script id="theme-init" strategy="beforeInteractive">
-          {themeInitScript}
-        </Script>
         {children}
       </body>
     </html>

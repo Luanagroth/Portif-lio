@@ -1,0 +1,112 @@
+.topNavigation {
+  position: fixed;
+  top: 22px;
+  left: 50%;
+  z-index: 80;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.topNavigationPage {
+  position: static;
+  left: auto;
+  top: auto;
+  transform: none;
+  z-index: auto;
+}
+
+.segmentedControl {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(129, 140, 248, 0.18);
+  border-radius: 999px;
+  background: rgba(3, 8, 25, 0.74);
+  padding: 6px;
+  backdrop-filter: blur(16px);
+  box-shadow:
+    0 14px 38px rgba(0, 0, 0, 0.28),
+    0 0 18px rgba(96, 165, 250, 0.06);
+  pointer-events: auto;
+}
+
+.segment {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0 18px;
+  color: rgba(226, 232, 240, 0.74);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.segment:hover {
+  color: #f8fafc;
+}
+
+.segmentActive {
+  background: linear-gradient(90deg, rgba(109, 40, 217, 0.88), rgba(59, 130, 246, 0.78));
+  color: #f8fafc;
+  box-shadow: 0 0 18px rgba(109, 40, 217, 0.16);
+}
+
+@media (max-width: 1180px) {
+  .topNavigation {
+    top: 20px;
+  }
+
+  .segment {
+    min-height: 32px;
+    padding: 0 14px;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .topNavigationPage {
+    display: block;
+  }
+
+  .topNavigationPage .segmentedControl {
+    gap: 4px;
+    padding: 5px;
+    box-shadow:
+      0 10px 24px rgba(0, 0, 0, 0.22),
+      0 0 14px rgba(96, 165, 250, 0.05);
+  }
+
+  .topNavigationPage .segment {
+    min-height: 30px;
+    padding: 0 11px;
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 430px) {
+  .topNavigationPage .segmentedControl {
+    gap: 3px;
+    padding: 4px;
+    transform: scale(0.88);
+    transform-origin: right center;
+  }
+
+  .topNavigationPage .segment {
+    min-height: 28px;
+    padding: 0 9px;
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .topNavigationPage .segmentedControl {
+    transform: scale(0.82);
+  }
+
+  .topNavigationPage .segment {
+    padding: 0 8px;
+    font-size: 0.66rem;
+  }
+}

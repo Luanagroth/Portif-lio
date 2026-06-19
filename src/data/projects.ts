@@ -5,52 +5,82 @@ const githubRaw = (repository: string, path: string) =>
 
 export const manualProjects: ProjectManual[] = [
   {
+    id: "movi",
     slug: "movi",
-    name: "MOVI - Plataforma de mobilidade urbana",
-    category: "Mobilidade Urbana e PWA",
-    status: {
-      label: "Publicado e em evolução",
-      tone: "active",
-    },
-    shortDescription:
-      "Plataforma pública de mobilidade urbana para consultar linhas, horários, paradas, rotas, bilhetes, tarifas, notícias e modais hidroviários em uma experiência responsiva.",
-    summary:
-      "MOVI centraliza dados públicos de transporte de São Francisco do Sul e região, reunindo linhas, horários, mapa, bilhetes, tarifas, clima, notícias e avisos em uma consulta mais rápida, organizada e acessível.",
-    professionalDescription:
-      "O projeto combina frontend, backend, dados reais, autenticação, favoritos por usuário, mapa interativo, central de notícias, consulta de tarifas e estrutura PWA para entregar um produto completo de mobilidade urbana com utilidade prática no dia a dia.",
+    name: "MOVI",
+    category: "Plataforma de mobilidade urbana",
+    projectType: "platform",
+    lifecycleStatus: "evolving",
+    section: "main",
     featured: true,
+    accentColor: "#38BDF8",
+    shortDescription:
+      "Plataforma pública para consultar linhas, horários, paradas, rotas, tarifas, notícias e modais em uma experiência responsiva.",
+    problem:
+      "Informações de transporte urbano estavam espalhadas, lentas de consultar e pouco adaptadas ao uso diário no celular.",
+    solution:
+      "Uma plataforma única com linhas, horários, mapa interativo, tarifas, bilhetes, favoritos por usuário e central de avisos.",
+    learning:
+      "Integração de dados reais, autenticação, mapa, backend e experiência mobile em um produto com utilidade prática.",
+    impact:
+      "Reduz a fricção para encontrar rotas, horários e pontos de embarque em uma consulta mais clara e acessível.",
+    summary:
+      "MOVI centraliza dados públicos de transporte de São Francisco do Sul e região em um produto pensado para consulta rápida.",
+    professionalDescription:
+      "O projeto combina frontend, backend, dados reais, autenticação, favoritos por usuário, mapa interativo, central de notícias, consulta de tarifas e estrutura PWA para entregar um produto completo de mobilidade urbana.",
     preview: {
       kind: "gallery",
       images: [
         {
           src: "/images/movi/home.png",
-          alt: "Home do MOVI com ônibus amarelo em destaque, chamada São Chico em movimento e card de clima.",
+          alt: "Home do MOVI com destaque para ônibus, clima e navegação principal.",
           title: "Home e clima",
         },
         {
           src: "/images/movi/linhas.png",
-          alt: "Tela de linhas e horários do MOVI com busca, lista de linhas, indicadores da linha selecionada e mapa interativo.",
-          title: "Linhas, horários e mapa",
+          alt: "Tela de linhas e horários do MOVI com busca, lista de linhas e mapa interativo.",
+          title: "Linhas e mapa",
         },
         {
           src: "/images/movi/bilhetes.png",
-          alt: "Tela de bilhetes e tarifas do MOVI com valores de transporte terrestre e hidroviário.",
+          alt: "Tela de bilhetes e tarifas do MOVI com valores do transporte terrestre e hidroviário.",
           title: "Bilhetes e tarifas",
         },
         {
           src: "/images/movi/noticias.png",
-          alt: "Tela de notícias e avisos do MOVI com destaque para travessia hidroviária e comunicados importantes.",
+          alt: "Tela de notícias e avisos do MOVI com comunicados e travessia hidroviária.",
           title: "Notícias e avisos",
         },
       ],
     },
+    images: [
+      {
+        src: "/images/movi/home.png",
+        alt: "Home do MOVI com destaque para ônibus, clima e navegação principal.",
+        title: "Home e clima",
+      },
+      {
+        src: "/images/movi/linhas.png",
+        alt: "Tela de linhas e horários do MOVI com busca, lista de linhas e mapa interativo.",
+        title: "Linhas e mapa",
+      },
+      {
+        src: "/images/movi/bilhetes.png",
+        alt: "Tela de bilhetes e tarifas do MOVI com valores do transporte terrestre e hidroviário.",
+        title: "Bilhetes e tarifas",
+      },
+      {
+        src: "/images/movi/noticias.png",
+        alt: "Tela de notícias e avisos do MOVI com comunicados e travessia hidroviária.",
+        title: "Notícias e avisos",
+      },
+    ],
     technologies: [
       { name: "Next.js 15", slug: "next" },
       { name: "React 19", slug: "react" },
       { name: "TypeScript", slug: "typescript" },
       { name: "Tailwind CSS", slug: "tailwind" },
       { name: "Leaflet", slug: "leaflet" },
-      { name: "Node.js", slug: "node" },
       { name: "Express", slug: "express" },
       { name: "Prisma", slug: "prisma" },
       { name: "SQLite", slug: "sqlite" },
@@ -58,41 +88,271 @@ export const manualProjects: ProjectManual[] = [
       { name: "Zod", slug: "zod" },
     ],
     differentiators: [
-      "Centraliza informações públicas de mobilidade que antes ficavam espalhadas em múltiplas fontes.",
-      "Organiza linhas, horários, sentidos, paradas, rotas, bilhetes e tarifas em uma interface única.",
-      "Integra mapa interativo, clima, notícias, favoritos por usuário e autenticação para aproximar o produto do uso real.",
-      "Inclui estrutura PWA com cache de assets estáticos e fallback offline básico.",
+      "Centraliza informações públicas de mobilidade que antes estavam espalhadas em múltiplas fontes.",
+      "Combina linhas, horários, sentidos, paradas, tarifas, clima e avisos em uma interface única.",
+      "Inclui favoritos por usuário, mapa interativo e estrutura PWA com utilidade prática no dia a dia.",
     ],
-    impactPoints: [
-      "Reduz a fricção para encontrar horários, rotas e pontos de embarque em dispositivos móveis.",
-      "Mostra capacidade de estruturar frontend, backend, dados, autenticação e experiência PWA em torno de um problema real.",
-      "Cria uma base técnica pronta para evoluir com novas cidades, modais, filtros, notícias e integrações públicas.",
+    execution: [
+      "Integra dados reais de transporte com navegação responsiva pensada para consulta rápida no celular.",
+      "Organiza autenticação, favoritos, rotas e notícias em fluxos coerentes para uso recorrente.",
     ],
-    architectureNotes: {
-      title: "Arquitetura e decisões",
-      points: [
-        "Monorepo com apps de frontend e backend, além de pacote compartilhado para organizar contratos e evolução do domínio.",
-        "Frontend em Next.js, React, Tailwind e React-Leaflet, com navegação responsiva e foco em consulta rápida no celular.",
-        "Backend em Express, Prisma e SQLite para organizar entidades como linhas, horários, sentidos, paradas, favoritos e usuários.",
-      ],
+    architecture: [
+      "Monorepo com frontend, backend e contratos compartilhados para separar domínio e interface.",
+      "Backend em Express, Prisma e SQLite para organizar linhas, horários, sentidos, paradas e usuários.",
+      "Frontend com Next.js, React, Tailwind e Leaflet para unir consulta textual e mapa interativo.",
+    ],
+    metrics: ["Dados reais", "Mapa interativo", "PWA"],
+    links: {
+      demo: "https://movi-frontend.vercel.app/",
+      github: "https://github.com/Luanagroth/Movi",
+      readme: "https://github.com/Luanagroth/Movi/blob/main/README.md",
     },
-    metrics: ["Dados reais", "Mapa interativo", "Bilhetes e notícias"],
-    repositoryUrl: "https://github.com/Luanagroth/Movi",
-    demoUrl: "https://movi-frontend.vercel.app/",
-    repositoryLabel: "Ver código",
-    readmeUrl: "https://github.com/Luanagroth/Movi/blob/main/README.md",
   },
   {
+    id: "atlas",
+    slug: "atlas",
+    name: "Atlas",
+    category: "Sistema de auditoria e conformidade",
+    projectType: "system",
+    lifecycleStatus: "published",
+    section: "main",
+    featured: true,
+    accentColor: "#8B5CF6",
+    shortDescription:
+      "Solução para organizar auditorias, checklists, evidências, não conformidades e planos de ação com leitura operacional clara.",
+    problem:
+      "Processos de auditoria e conformidade costumam ficar dispersos, difíceis de acompanhar e pouco priorizados na operação.",
+    solution:
+      "Uma experiência de gestão focada em auditorias, dossiês, evidências e planos de ação com visão mais organizada do processo.",
+    learning:
+      "Modelagem de fluxos internos, clareza de sistema e hierarquia de informação aplicada a um domínio operacional complexo.",
+    impact:
+      "Transforma um tema técnico e burocrático em uma leitura mais objetiva para tomada de decisão e acompanhamento.",
+    summary:
+      "Atlas traduz processos de auditoria e conformidade em uma interface de gestão com foco em leitura operacional e acompanhamento.",
+    professionalDescription:
+      "O projeto reforça leitura de produto B2B, priorização de estados críticos e organização de dados de acompanhamento em um fluxo mais legível.",
+    preview: {
+      kind: "image",
+      src: "/images/projects/atlas-dashboard.png",
+      alt: "Dashboard do projeto Atlas exibindo indicadores e gestão de auditorias",
+      width: 1909,
+      height: 944,
+    },
+    images: [
+      {
+        src: "/images/projects/atlas-dashboard.png",
+        alt: "Dashboard do projeto Atlas exibindo indicadores e gestão de auditorias",
+        title: "Dashboard operacional",
+      },
+    ],
+    technologies: [
+      { name: "Next.js", slug: "next" },
+      { name: "React", slug: "react" },
+      { name: "TypeScript", slug: "typescript" },
+    ],
+    differentiators: [
+      "Foco em leitura operacional, estados críticos e acompanhamento de ações corretivas.",
+      "Estrutura pensada para auditorias, evidências, não conformidades e planos de ação em um mesmo fluxo.",
+    ],
+    execution: [
+      "Explora priorização visual e hierarquia de interface para um domínio com muitas etapas e responsabilidades.",
+    ],
+    architecture: [
+      "Conceito orientado a sistema interno com organização de módulos, estados e entidades operacionais.",
+    ],
+    metrics: ["Dossiês", "Auditorias", "Planos"],
+    links: {
+      demo: "https://projeto-atlas-1-0-bgs8.vercel.app/",
+      github: "https://github.com/Luanagroth/Projeto-ATLAS-1.0.git",
+      readme: "https://github.com/Luanagroth/Projeto-ATLAS-1.0/blob/master/README.md",
+    },
+  },
+  {
+    id: "essenza",
+    slug: "essenza-bistro",
+    name: "Essenza",
+    category: "Plataforma modular para restaurante",
+    projectType: "platform",
+    lifecycleStatus: "published",
+    section: "main",
+    featured: true,
+    accentColor: "#EC4899",
+    shortDescription:
+      "Plataforma para operação de restaurante com site público, painel interno, comandas, reservas, cardápio e relatórios.",
+    problem:
+      "Era necessário separar jornadas públicas e internas sem perder consistência de produto nem integração operacional.",
+    solution:
+      "Uma arquitetura modular com site público, gestão interna e backend compartilhado para reservas, comandas, cardápio e relatórios.",
+    learning:
+      "Arquitetura em micro frontends, integração entre domínios e publicação distribuída para uma operação mais próxima de produto real.",
+    impact:
+      "Conecta experiência do cliente e operação interna em uma plataforma navegável, modular e pronta para evoluções.",
+    summary:
+      "Sistema completo para o Essenza Bistrô, conectando a experiência pública do cliente com a operação interna do restaurante.",
+    professionalDescription:
+      "O projeto explora uma arquitetura mais próxima de produto real: frontends separados por responsabilidade, integração via Module Federation, backend em Express com Prisma e deploy distribuído.",
+    preview: {
+      kind: "gallery",
+      images: [
+        {
+          src: "/images/projects/essenza-home.png",
+          alt: "Home pública do Essenza Bistrô com hero principal, navegação e botões de cardápio e reservas.",
+          title: "Home pública",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/dashboard.png"),
+          alt: "Dashboard interno do Essenza Bistrô com indicadores operacionais.",
+          title: "Painel geral",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/mapa-mesas.png"),
+          alt: "Mapa de mesas do Essenza Bistrô com status de atendimento.",
+          title: "Mapa de mesas",
+        },
+        {
+          src: githubRaw("microfrontends-cardapio", "screenshots/publico-home-1.png"),
+          alt: "Home pública do Essenza Bistrô com apresentação do restaurante.",
+          title: "Home pública",
+        },
+      ],
+    },
+    images: [
+      {
+        src: "/images/projects/essenza-home.png",
+        alt: "Home pública do Essenza Bistrô com hero principal, navegação e botões de cardápio e reservas.",
+        title: "Home pública",
+      },
+      {
+        src: githubRaw("microfrontends-cardapio", "screenshots/dashboard.png"),
+        alt: "Dashboard interno do Essenza Bistrô com indicadores operacionais.",
+        title: "Painel geral",
+      },
+      {
+        src: githubRaw("microfrontends-cardapio", "screenshots/mapa-mesas.png"),
+        alt: "Mapa de mesas do Essenza Bistrô com status de atendimento.",
+        title: "Mapa de mesas",
+      },
+      {
+        src: githubRaw("microfrontends-cardapio", "screenshots/publico-home-1.png"),
+        alt: "Home pública do Essenza Bistrô com apresentação do restaurante.",
+        title: "Home pública",
+      },
+    ],
+    technologies: [
+      { name: "React 18", slug: "react" },
+      { name: "JavaScript", slug: "javascript" },
+      { name: "Webpack 5", slug: "webpack" },
+      { name: "Node.js", slug: "node" },
+      { name: "Express", slug: "express" },
+      { name: "Prisma", slug: "prisma" },
+      { name: "SQLite", slug: "sqlite" },
+      { name: "Vitest", slug: "vitest" },
+      { name: "Vercel", slug: "vercel" },
+    ],
+    differentiators: [
+      "Separa painel interno, comandas, site público e backend em módulos com responsabilidades claras.",
+      "Integra reservas, cardápio, comandas, relatórios e currículos em uma API REST com persistência real.",
+      "Publica frontends na Vercel e backend na Railway com fluxo mais próximo de produto em operação.",
+    ],
+    execution: [
+      "Conecta jornada pública e operação interna sem perder consistência de experiência nem contexto de gestão.",
+      "Inclui acesso de demonstração para a área administrativa do sistema.",
+    ],
+    architecture: [
+      "Module Federation para orquestrar frontends remotos publicados separadamente.",
+      "Backend em Express com Prisma para reservas, pedidos, produtos, categorias, currículos e uploads.",
+      "Contratos e utilitários compartilhados para manter a comunicação consistente entre módulos.",
+    ],
+    metrics: ["Module Federation", "API REST", "Vercel + Railway"],
+    links: {
+      demo: "https://microfrontends-cardapio.vercel.app/",
+      github: "https://github.com/Luanagroth/microfrontends-cardapio",
+      readme: "https://github.com/Luanagroth/microfrontends-cardapio/blob/main/README.md",
+      management: "https://microfrontends-cardapio-pvda.vercel.app/",
+    },
+    managementAccess: {
+      login: "admin@essenza.local",
+      password: "admin123",
+    },
+  },
+  {
+    id: "farol",
+    slug: "farol",
+    name: "Farol",
+    category: "Sistema de gestão para pequenos negócios",
+    projectType: "system",
+    lifecycleStatus: "development",
+    section: "main",
+    featured: true,
+    accentColor: "#2DD4BF",
+    shortDescription:
+      "Solução para organizar vendas, estoque e indicadores de pequenos negócios com leitura mais clara do que está acontecendo na operação.",
+    problem:
+      "Pequenos negócios precisam visualizar vendas, estoque e indicadores sem depender de planilhas confusas ou fluxos fragmentados.",
+    solution:
+      "Um sistema de gestão com foco em leitura de operação, organização de dados e painéis mais acionáveis para o dia a dia.",
+    learning:
+      "Design de dashboard orientado a uso, hierarquia de informação e priorização de métricas realmente úteis para a rotina do negócio.",
+    impact:
+      "A proposta reduz ruído operacional e aponta um caminho claro para controle, acompanhamento e tomada de decisão.",
+    summary:
+      "Farol organiza vendas, estoque e indicadores em uma solução de gestão pensada para leitura objetiva e evolução incremental.",
+    professionalDescription:
+      "O projeto aprofunda leitura de produto, organização de dados e desenho de interface para um sistema operacional mais claro.",
+    preview: {
+      kind: "panel",
+      alt: "Painel conceitual do Farol com vendas, estoque e indicadores.",
+      eyebrow: "Gestão para negócios",
+      title: "Farol",
+      description: "Controle de vendas, estoque e indicadores com leitura mais clara da operação.",
+      bullets: ["Vendas", "Estoque", "Indicadores", "Dashboard"],
+      stats: [
+        { label: "Status", value: "Em desenvolvimento" },
+        { label: "Foco", value: "Operação" },
+      ],
+    },
+    images: [],
+    technologies: [
+      { name: "Next.js", slug: "next" },
+      { name: "Node.js", slug: "node" },
+      { name: "Prisma", slug: "prisma" },
+    ],
+    differentiators: [
+      "Foco em operação de pequenos negócios com leitura visual mais simples e útil.",
+      "Prioriza indicadores, controle de estoque e visão de vendas em um único sistema.",
+    ],
+    execution: [
+      "Explora organização de dashboard, estados de operação e visão de acompanhamento para uso recorrente.",
+    ],
+    architecture: ["Conceito de sistema web orientado a dados, painéis e fluxos de gestão."],
+    metrics: ["Vendas", "Estoque", "Indicadores"],
+    links: {},
+  },
+  {
+    id: "palavri-metro",
     slug: "palavri-metro",
     name: "Palavri-metro",
-    category: "Chrome Extension",
-    shortDescription:
-      "Análise textual local no navegador para leitura crítica, SEO e revisão editorial.",
-    summary:
-      "Extensão para Google Chrome que transforma páginas e seleções em relatórios rápidos de frequência de palavras, idioma e recorrência sem depender de backend.",
-    professionalDescription:
-      "O Palavri-metro foi estruturado como um produto enxuto, mas com sinais claros de maturidade técnica: motor de análise modular, foco em privacidade por execução local, suporte multilíngue e experiência orientada a uso recorrente no navegador. O resultado é uma ferramenta com utilidade prática imediata para pesquisa, estudo e análise de conteúdo.",
+    category: "Extensão de análise textual",
+    projectType: "extension",
+    lifecycleStatus: "published",
+    section: "lab",
     featured: false,
+    accentColor: "#F59E0B",
+    shortDescription:
+      "Extensão Chrome para análise textual local com leitura crítica, SEO e revisão editorial sem depender de backend.",
+    problem:
+      "Leitura exploratória e análise de conteúdo costumam exigir ferramentas externas ou processos manuais lentos.",
+    solution:
+      "Uma extensão que transforma páginas e seleções em relatórios rápidos de frequência de palavras, idioma e recorrência.",
+    learning:
+      "Motor de análise modular, foco em privacidade por execução local e suporte multilíngue em uma ferramenta de uso real.",
+    impact:
+      "Reduz o tempo de leitura exploratória e demonstra cuidado com utilidade imediata e permissões enxutas.",
+    summary:
+      "Produto enxuto, mas maduro, para pesquisa, estudo e análise de conteúdo diretamente no navegador.",
+    professionalDescription:
+      "O Palavri-metro foi estruturado como um produto enxuto, com execução local, suporte a múltiplos idiomas e experiência orientada a uso recorrente.",
     preview: {
       kind: "image",
       src: githubRaw("Palavri-metro", "assets/screenshots/pt-page.png"),
@@ -100,6 +360,13 @@ export const manualProjects: ProjectManual[] = [
       width: 1600,
       height: 1000,
     },
+    images: [
+      {
+        src: githubRaw("Palavri-metro", "assets/screenshots/pt-page.png"),
+        alt: "Tela da extensão Palavri-metro mostrando análise de frequência de palavras em uma página.",
+        title: "Análise textual",
+      },
+    ],
     technologies: [
       { name: "JavaScript", slug: "javascript" },
       { name: "HTML5", slug: "html" },
@@ -109,32 +376,46 @@ export const manualProjects: ProjectManual[] = [
     ],
     differentiators: [
       "Execução 100% local no navegador, sem envio de conteúdo para serviços externos.",
-      "Motor de análise desacoplado da interface, facilitando manutenção e evolução incremental.",
       "Detecção automática de idioma com suporte a português, inglês e espanhol.",
-      "Testes unitários cobrindo normalização, tokenização, filtro de stopwords e cenários de idioma.",
+      "Testes cobrindo normalização, tokenização, filtro de stopwords e cenários de idioma.",
     ],
-    impactPoints: [
-      "Reduz o tempo de leitura exploratória em páginas longas com resumo imediato de termos-chave.",
-      "Demonstra cuidado com privacidade e escopo de permissões ao operar com `activeTab`, `scripting` e `storage`.",
-      "Funciona como case técnico de extensão Chrome com foco em utilidade real, não apenas prova de conceito.",
+    execution: [
+      "Permite análise rápida de páginas e seleções com foco em privacidade, revisão editorial e SEO.",
     ],
-    metrics: ["Manifest V3", "6 testes", "Chrome Web Store"],
-    repositoryUrl: "https://github.com/Luanagroth/Palavri-metro",
-    demoUrl: "https://chromewebstore.google.com/detail/mlclmnddpiindgejpacchiapplmnmaek",
-    demoLabel: "Ver extensão",
-    readmeUrl: "https://github.com/Luanagroth/Palavri-metro/blob/main/README.md",
+    architecture: [
+      "Motor de análise desacoplado da interface para facilitar manutenção e evolução incremental.",
+    ],
+    metrics: ["Manifest V3", "Execução local", "Chrome Web Store"],
+    links: {
+      store: "https://chromewebstore.google.com/detail/mlclmnddpiindgejpacchiapplmnmaek",
+      github: "https://github.com/Luanagroth/Palavri-metro",
+      readme: "https://github.com/Luanagroth/Palavri-metro/blob/main/README.md",
+    },
   },
   {
+    id: "extension-guard",
     slug: "extension-guard",
     name: "Extension Guard",
-    category: "Segurança e Privacidade",
-    shortDescription:
-      "Auditoria local de extensões instaladas com score heurístico de risco e side panel executivo.",
-    summary:
-      "Extensão Chrome pensada como produto de segurança: analisa permissões sensíveis, explica o risco encontrado e organiza auditorias em uma interface profissional.",
-    professionalDescription:
-      "O Extension Guard transforma um tema técnico e geralmente opaco em uma experiência legível para tomada de decisão. A aplicação separa claramente domínio, adapters, persistência e interface React, o que reforça testabilidade, escalabilidade e consistência entre background, side panel e armazenamento local.",
+    category: "Extensão de segurança e privacidade",
+    projectType: "extension",
+    lifecycleStatus: "published",
+    section: "lab",
     featured: false,
+    accentColor: "#F97316",
+    shortDescription:
+      "Extensão para auditoria local de permissões instaladas com score heurístico de risco e side panel executivo.",
+    problem:
+      "Permissões de extensões costumam ser opacas para o usuário comum, dificultando entender risco real e prioridade de ação.",
+    solution:
+      "Uma auditoria local que analisa permissões sensíveis, atribui score heurístico e explica o risco encontrado.",
+    learning:
+      "Arquitetura em camadas, tipagem forte, validação em runtime e produto Chrome mais complexo com múltiplas entradas.",
+    impact:
+      "Traduz permissões técnicas em sinais acionáveis para o usuário, melhorando clareza e confiança.",
+    summary:
+      "Produto de segurança que transforma um tema técnico e opaco em uma experiência legível para tomada de decisão.",
+    professionalDescription:
+      "O Extension Guard separa claramente domínio, adapters, persistência e interface React, reforçando testabilidade, escalabilidade e consistência.",
     preview: {
       kind: "image",
       src: githubRaw("Extension-Guard", "docs/images/overview.png"),
@@ -142,6 +423,13 @@ export const manualProjects: ProjectManual[] = [
       width: 1600,
       height: 1000,
     },
+    images: [
+      {
+        src: githubRaw("Extension-Guard", "docs/images/overview.png"),
+        alt: "Visão geral da interface do Extension Guard em side panel com resumo de risco.",
+        title: "Resumo de risco",
+      },
+    ],
     technologies: [
       { name: "React 19", slug: "react" },
       { name: "TypeScript", slug: "typescript" },
@@ -151,50 +439,64 @@ export const manualProjects: ProjectManual[] = [
       { name: "Zod", slug: "zod" },
     ],
     differentiators: [
-      "Arquitetura em camadas com separação entre domínio, adapters, repositories e UI.",
-      "Score heurístico explicável, com recomendações textuais e leitura executiva das permissões.",
+      "Score heurístico explicável com recomendações textuais e leitura executiva das permissões.",
       "Persistência local de auditorias e configurações com repositories dedicados.",
       "Cobertura de testes unitários, de integração e de componente.",
     ],
-    impactPoints: [
-      "Traduz permissões técnicas em sinais acionáveis para o usuário, melhorando clareza e confiança.",
-      "Mostra domínio de produtos Chrome mais complexos, com múltiplas entradas e service worker.",
-      "Evidencia disciplina de engenharia com tipagem forte, validação em runtime e desenho orientado à manutenção.",
+    execution: [
+      "Usa background, side panel e armazenamento local para estruturar uma experiência de segurança mais clara.",
     ],
+    architecture: ["Arquitetura em camadas com separação entre domínio, adapters, repositories e UI."],
     metrics: ["Manifest V3", "Arquitetura em camadas", "Histórico local"],
-    repositoryUrl: "https://github.com/Luanagroth/Extension-Guard",
-    demoUrl: "https://chromewebstore.google.com/detail/jihknbnaipjpaeffdmpfiiicpmmlkjdb",
-    demoLabel: "Ver extensão",
-    readmeUrl: "https://github.com/Luanagroth/Extension-Guard/blob/main/README.md",
+    links: {
+      store: "https://chromewebstore.google.com/detail/jihknbnaipjpaeffdmpfiiicpmmlkjdb",
+      github: "https://github.com/Luanagroth/Extension-Guard",
+      readme: "https://github.com/Luanagroth/Extension-Guard/blob/main/README.md",
+    },
   },
   {
+    id: "flowtrack",
     slug: "flowtrack",
     name: "FlowTrack",
-    category: "Produtividade SaaS",
-    status: {
-      label: "Atualizado recentemente",
-      tone: "active",
-    },
-    shortDescription:
-      "Dashboard de produtividade pessoal com tarefas, hábitos, metas semanais e Pomodoro em uma interface reformulada e pronta para evolução.",
-    summary:
-      "Aplicação de produtividade pessoal com foco em rotina, organização e constância. O FlowTrack centraliza tarefas, hábitos diários, metas da semana, horário local e um ciclo de Pomodoro com persistência local em uma experiência mais clara e madura.",
-    professionalDescription:
-      "A versão mais recente reforça leitura de produto: dashboard reorganizado, hierarquia visual refinada, placeholders mais orientativos, notas opcionais nas entidades principais e Pomodoro com notificações nativas e controle de som. O resultado mostra evolução real de UX sem perder disciplina técnica.",
+    category: "Experimento de produtividade",
+    projectType: "experiment",
+    lifecycleStatus: "evolving",
+    section: "lab",
     featured: false,
+    accentColor: "#F97316",
+    shortDescription:
+      "Dashboard de produtividade com tarefas, hábitos, metas semanais e Pomodoro em uma interface reformulada e pronta para evoluir.",
+    problem:
+      "Rotinas pessoais de produtividade tendem a se espalhar entre ferramentas e perder clareza de prioridade no uso diário.",
+    solution:
+      "Um dashboard que centraliza tarefas, hábitos, metas da semana, horário local e Pomodoro com persistência local.",
+    learning:
+      "Evolução real de UX, organização modular em hooks reutilizáveis e melhoria incremental sem perder consistência técnica.",
+    impact:
+      "Traduz rotina pessoal em um fluxo claro, responsivo e realmente acionável para uso recorrente.",
+    summary:
+      "Aplicação de produtividade pessoal com foco em rotina, organização e constância em uma experiência mais madura.",
+    professionalDescription:
+      "A versão mais recente reforça leitura de produto com dashboard reorganizado, hierarquia visual refinada e Pomodoro com notificações nativas.",
     preview: {
       kind: "image",
       src: "/images/flowtrack-dashboard.png",
-      alt: "Dashboard reformulado do FlowTrack com cards de tarefas, hábitos, metas semanais e Pomodoro.",
+      alt: "Dashboard reformulado do FlowTrack com tarefas, hábitos, metas semanais e Pomodoro.",
       width: 1265,
       height: 874,
     },
+    images: [
+      {
+        src: "/images/flowtrack-dashboard.png",
+        alt: "Dashboard reformulado do FlowTrack com tarefas, hábitos, metas semanais e Pomodoro.",
+        title: "Dashboard",
+      },
+    ],
     technologies: [
       { name: "Next.js 16", slug: "next" },
       { name: "React 19", slug: "react" },
       { name: "TypeScript", slug: "typescript" },
       { name: "Tailwind CSS 4", slug: "tailwind" },
-      { name: "ESLint 9", slug: "eslint" },
       { name: "Jest", slug: "jest" },
       { name: "RTL", slug: "rtl" },
       { name: "GitHub Actions", slug: "github-actions" },
@@ -204,160 +506,45 @@ export const manualProjects: ProjectManual[] = [
       "Dashboard reformulado com hierarquia visual mais clara e ordem dos cards pensada para uso recorrente.",
       "Tarefas, hábitos e metas com notas opcionais, edição e estados de conclusão mais objetivos.",
       "Pomodoro com ciclo automático, notificações nativas do navegador e som configurável.",
-      "Base modular com hooks reutilizáveis para persistência local, horário em tempo real e foco diário.",
     ],
-    impactPoints: [
-      "Traduz rotina pessoal e constância em um fluxo de uso claro, responsivo e realmente acionável no dia a dia.",
-      "Evidencia iteração de produto com melhorias funcionais e de interface aplicadas sobre uma base já publicada.",
-      "Abre conversa técnica sobre persistência local, evolução para backend, analytics e experiência offline futura.",
+    execution: [
+      "Persiste dados localmente e organiza rotinas com foco em produtividade pessoal e clareza de acompanhamento.",
     ],
-    architectureNotes: {
-      title: "Arquitetura e evolução",
-      points: [
-        "Estrutura organizada em app, components, hooks, lib, types e testes para separar UI, comportamento e domínio.",
-        "Hooks como useLocalStorage, usePomodoro e useCurrentTime reduzem acoplamento e facilitam evolução incremental.",
-        "Pipeline com lint, testes, build e deploy em produção reforça consistência entre iteração visual e qualidade técnica.",
-      ],
+    architecture: [
+      "Estrutura organizada em app, components, hooks, lib, types e testes para separar UI, comportamento e domínio.",
+      "Hooks como useLocalStorage, usePomodoro e useCurrentTime reduzem acoplamento e facilitam evolução incremental.",
+    ],
+    metrics: ["Pomodoro", "Persistência local", "CI/CD"],
+    links: {
+      demo: "https://flowtrack-seven.vercel.app",
+      github: "https://github.com/Luanagroth/flowtrack",
+      readme: "https://github.com/Luanagroth/flowtrack/blob/main/README.md",
     },
-    metrics: ["Next.js 16", "Pomodoro com notificações", "CI/CD em produção"],
-    repositoryUrl: "https://github.com/Luanagroth/flowtrack",
-    demoUrl: "https://flowtrack-seven.vercel.app",
-    readmeUrl: "https://github.com/Luanagroth/flowtrack/blob/main/README.md",
   },
   {
-    slug: "essenza-bistro",
-    name: "Essenza Bistrô",
-    category: "Micro Frontends",
-    status: {
-      label: "Projeto publicado",
-      tone: "active",
-    },
-    shortDescription:
-      "Plataforma de operação para restaurante com painel interno, site público, comandas, reservas, cardápio e backend modular.",
-    summary:
-      "Sistema completo para o Essenza Bistrô, conectando a experiência pública do cliente com a operação interna do restaurante por meio de micro frontends, API REST e persistência local em SQLite.",
-    professionalDescription:
-      "O projeto explora uma arquitetura mais próxima de produto real: frontends separados por responsabilidade, integração via Webpack Module Federation, backend em Express com Prisma, deploy em Vercel e Railway e fluxos de negócio para reservas, comandas, cardápio, relatórios e currículos.",
-    featured: true,
-    preview: {
-      kind: "gallery",
-      images: [
-        {
-          src: githubRaw("microfrontends-cardapio", "screenshots/Login-interno.png"),
-          alt: "Tela de login administrativo do Essenza Bistrô.",
-          title: "Login interno",
-        },
-        {
-          src: githubRaw("microfrontends-cardapio", "screenshots/dashboard.png"),
-          alt: "Dashboard interno do Essenza Bistrô com indicadores de operação.",
-          title: "Painel geral",
-        },
-        {
-          src: githubRaw("microfrontends-cardapio", "screenshots/mapa-mesas.png"),
-          alt: "Mapa de mesas do Essenza Bistrô com status de atendimento.",
-          title: "Mapa de mesas",
-        },
-        {
-          src: githubRaw("microfrontends-cardapio", "screenshots/comanda.png"),
-          alt: "Comanda aberta do Essenza Bistrô com itens selecionados.",
-          title: "Comanda aberta",
-        },
-        {
-          src: githubRaw("microfrontends-cardapio", "screenshots/comanda-pagamento.png"),
-          alt: "Tela de pagamento e fechamento de comanda do Essenza Bistrô.",
-          title: "Pagamento",
-        },
-        {
-          src: githubRaw("microfrontends-cardapio", "screenshots/gestao-cardapio.png"),
-          alt: "Gestão de cardápio do Essenza Bistrô com produtos e categorias.",
-          title: "Gestão de cardápio",
-        },
-        {
-          src: githubRaw("microfrontends-cardapio", "screenshots/relatorios.png"),
-          alt: "Tela de relatórios operacionais do Essenza Bistrô.",
-          title: "Relatórios",
-        },
-        {
-          src: githubRaw("microfrontends-cardapio", "screenshots/curriculos.png"),
-          alt: "Painel de currículos recebidos pelo site público do Essenza Bistrô.",
-          title: "Currículos",
-        },
-        {
-          src: githubRaw("microfrontends-cardapio", "screenshots/publico-home-1.png"),
-          alt: "Primeira parte da home pública do Essenza Bistrô.",
-          title: "Home pública",
-        },
-        {
-          src: githubRaw("microfrontends-cardapio", "screenshots/publico-home-2.png"),
-          alt: "Segunda parte da home pública do Essenza Bistrô.",
-          title: "Cardápio público",
-        },
-        {
-          src: githubRaw("microfrontends-cardapio", "screenshots/publico-reservas.png"),
-          alt: "Formulário público de reservas do Essenza Bistrô.",
-          title: "Reservas",
-        },
-        {
-          src: githubRaw("microfrontends-cardapio", "screenshots/publico-curriculos-contato.png"),
-          alt: "Tela pública de currículos e contato do Essenza Bistrô.",
-          title: "Currículos e contato",
-        },
-      ],
-    },
-    technologies: [
-      { name: "React 18", slug: "react" },
-      { name: "JavaScript", slug: "javascript" },
-      { name: "Webpack 5", slug: "webpack" },
-      { name: "Node.js", slug: "node" },
-      { name: "Express", slug: "express" },
-      { name: "Prisma", slug: "prisma" },
-      { name: "SQLite", slug: "sqlite" },
-      { name: "CSS3", slug: "css" },
-      { name: "Vitest", slug: "vitest" },
-      { name: "Vercel", slug: "vercel" },
-    ],
-    differentiators: [
-      "Separa painel interno, micro frontend de comandas, site público e backend em módulos com responsabilidades claras.",
-      "Integra micro frontends com Webpack Module Federation e contratos compartilhados para reduzir acoplamento.",
-      "Conecta reservas, cardápio, comandas, relatórios e currículos a uma API REST com persistência via Prisma e SQLite.",
-      "Publica frontends na Vercel e backend na Railway, com integração real entre site público e sistema interno.",
-    ],
-    impactPoints: [
-      "Demonstra capacidade de transformar um domínio de negócio completo em uma aplicação modular e navegável.",
-      "Mostra domínio de integração entre múltiplos frontends, backend e banco de dados em um mesmo produto.",
-      "Cria uma base pronta para evoluir com autenticação, histórico operacional, painel de cozinha e deploy de backend.",
-    ],
-    architectureNotes: {
-      title: "Arquitetura em micro frontends",
-      points: [
-        "Container principal orquestra a experiência interna e consome módulos remotos publicados via Module Federation.",
-        "Backend em Express organiza domínios como reservas, pedidos, produtos, categorias, currículos e uploads.",
-        "Shared centraliza contratos, helpers e configurações usadas entre frontends para manter a comunicação consistente.",
-      ],
-    },
-    metrics: ["Module Federation", "API REST", "Vercel + Railway"],
-    repositoryUrl: "https://github.com/Luanagroth/microfrontends-cardapio",
-    demoUrl: "https://microfrontends-cardapio.vercel.app",
-    demoLabel: "Ver site público",
-    managementUrl: "https://microfrontends-cardapio-pvda.vercel.app",
-    managementLabel: "Ver gestão",
-    managementAccess: {
-      login: "admin@essenza.local",
-      password: "admin123",
-    },
-    readmeUrl: "https://github.com/Luanagroth/microfrontends-cardapio/blob/main/README.md",
-  },
-  {
+    id: "testes-unitarios",
     slug: "testes-unitarios",
     name: "Testes Unitários",
-    category: "Next.js Full Stack",
+    category: "Experimento full stack com App Router",
+    projectType: "experiment",
+    lifecycleStatus: "published",
+    section: "lab",
+    featured: false,
+    accentColor: "#60A5FA",
     shortDescription:
-      "Aplicação de tarefas com App Router, API local e persistência em JSON para demonstrar base full stack.",
+      "Aplicação de tarefas com App Router, API local e persistência em JSON para demonstrar base full stack e qualidade.",
+    problem:
+      "Projetos pequenos costumam perder clareza arquitetural ao crescer, especialmente quando frontend, backend e persistência convivem no mesmo repositório.",
+    solution:
+      "Uma aplicação de tarefas com CRUD completo, API local, contratos tipados e testes para mostrar base full stack bem organizada.",
+    learning:
+      "Estruturação de App Router, rotas de API, persistência simples e testes automatizados em uma arquitetura didática, mas profissional.",
+    impact:
+      "Entrega uma peça de portfólio que combina clareza didática com estrutura sustentável para evoluções futuras.",
     summary:
       "Projeto focado em organização arquitetural, contratos tipados e testes automatizados para uma experiência CRUD completa em Next.js.",
     professionalDescription:
-      "Este case organiza frontend, backend e persistência local de forma didática, mas profissional. A estrutura separa componentes, hooks, rotas de API e camada de dados, criando uma base sólida para discutir escalabilidade, qualidade e evolução de um produto full stack simples para cenários mais robustos.",
-    featured: false,
+      "Este case organiza frontend, backend e persistência local de forma didática, criando uma base sólida para discutir escalabilidade e qualidade.",
     preview: {
       kind: "image",
       src: githubRaw("Teste_unit-tio_EBAC", "docs/preview.png"),
@@ -365,6 +552,13 @@ export const manualProjects: ProjectManual[] = [
       width: 1600,
       height: 1000,
     },
+    images: [
+      {
+        src: githubRaw("Teste_unit-tio_EBAC", "docs/preview.png"),
+        alt: "Tela da aplicação de tarefas desenvolvida em Next.js com painel de gerenciamento.",
+        title: "CRUD de tarefas",
+      },
+    ],
     technologies: [
       { name: "Next.js 15", slug: "next" },
       { name: "React 19", slug: "react" },
@@ -376,17 +570,19 @@ export const manualProjects: ProjectManual[] = [
     differentiators: [
       "Separação explícita entre camada Next.js, frontend, backend e persistência local.",
       "API local com operações CRUD completas e contrato tipado entre as camadas.",
-      "Persistência em JSON como solução simples, útil para simular fluxo full stack sem infraestrutura externa.",
       "Testes cobrindo página, componentes e hook customizado.",
     ],
-    impactPoints: [
-      "Mostra domínio da organização do App Router para interface e endpoints no mesmo projeto.",
-      "Ajuda a conversar sobre modelagem, persistência e evolução para banco de dados real.",
-      "Entrega uma peça de portfólio que combina clareza didática com estrutura sustentável.",
+    execution: [
+      "Organiza a experiência de tarefas em uma base full stack simples, clara e pronta para evoluir.",
+    ],
+    architecture: [
+      "App Router e API local convivem no mesmo projeto para demonstrar fluxo full stack com baixo atrito de infraestrutura.",
     ],
     metrics: ["API local", "Persistência em JSON", "CRUD completo"],
-    repositoryUrl: "https://github.com/Luanagroth/Teste_unit-tio_EBAC",
-    demoUrl: "https://teste-unitario-tarefas.vercel.app",
-    readmeUrl: "https://github.com/Luanagroth/Teste_unit-tio_EBAC/blob/main/README.md",
+    links: {
+      demo: "https://teste-unitario-tarefas.vercel.app",
+      github: "https://github.com/Luanagroth/Teste_unit-tio_EBAC",
+      readme: "https://github.com/Luanagroth/Teste_unit-tio_EBAC/blob/main/README.md",
+    },
   },
 ];

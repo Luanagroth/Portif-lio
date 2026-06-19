@@ -1,0 +1,35 @@
+.cardHudLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.cardStage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: max(100vw, calc(100dvh * 1.7768331562));
+  height: max(100dvh, calc(100vw / 1.7768331562));
+  transform: translate(-50%, -50%);
+  overflow: visible;
+  pointer-events: none;
+}
+
+@media (min-aspect-ratio: 1672 / 941) {
+  .cardStage {
+    left: auto;
+    right: 0;
+    top: 50%;
+    width: calc(100dvh * 1.7768331562);
+    height: 100dvh;
+    transform: translateY(-50%);
+  }
+}
+
+@media (max-width: 900px) {
+  .cardHudLayer {
+    display: none;
+  }
+}

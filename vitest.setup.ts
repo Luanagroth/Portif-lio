@@ -1,6 +1,14 @@
 import "@testing-library/jest-dom/vitest";
 import { afterEach, beforeAll, vi } from "vitest";
 
+declare global {
+  var __TEST_PATHNAME__: string | undefined;
+}
+
+vi.mock("next/navigation", () => ({
+  usePathname: () => globalThis.__TEST_PATHNAME__ ?? "/",
+}));
+
 const githubRepositoryResponses = new Map([
   [
     "Luanagroth/Palavri-metro",
@@ -60,6 +68,20 @@ const githubRepositoryResponses = new Map([
 
 beforeAll(() => {
   vi.stubGlobal(
+    "matchMedia",
+    vi.fn((query: string) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    })),
+  );
+
+  vi.stubGlobal(
     "fetch",
     vi.fn(async (input: RequestInfo | URL) => {
       const url = typeof input === "string" ? input : input.toString();
@@ -85,5 +107,6 @@ beforeAll(() => {
 });
 
 afterEach(() => {
+  globalThis.__TEST_PATHNAME__ = "/";
   vi.clearAllMocks();
 });

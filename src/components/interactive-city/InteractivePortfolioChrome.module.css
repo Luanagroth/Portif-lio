@@ -1,0 +1,338 @@
+.pageChrome {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+}
+
+.readabilityGradient {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 10;
+  width: min(34vw, 420px);
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgb(2 6 23 / 0.68) 0%, rgb(2 6 23 / 0.3) 56%, transparent 100%);
+}
+
+.pageHeader {
+  position: fixed;
+  top: 18px;
+  left: 24px;
+  right: 24px;
+  z-index: 90;
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  pointer-events: none;
+}
+
+.homeHeader,
+.pageHeaderSolid {
+  pointer-events: none;
+}
+
+.pageBrand {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  pointer-events: auto;
+}
+
+.pageBrandMobileWrap {
+  display: flex;
+}
+
+.brandCopy {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.brandName {
+  color: #f8fafc;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.brandVersion {
+  color: rgb(191 219 254 / 0.72);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.headerAvatar {
+  flex: 0 0 auto;
+  box-shadow:
+    0 0 0 4px rgb(255 255 255 / 0.02),
+    0 0 18px rgb(96 165 250 / 0.12);
+}
+
+.pageHeaderCenter {
+  display: flex;
+  justify-content: center;
+  min-width: 0;
+  pointer-events: none;
+}
+
+.pageHeaderCenter > * {
+  pointer-events: auto;
+}
+
+.pageHeaderActions {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.headerActionLink,
+.brandMenuLink {
+  text-decoration: none;
+}
+
+.headerActionLink {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgb(148 163 184 / 0.14);
+  padding: 0 0.95rem;
+  background: rgb(2 6 23 / 0.28);
+  color: rgb(226 232 240 / 0.9);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.headerActionLink:hover,
+.headerActionLink:focus-visible {
+  border-color: rgb(56 189 248 / 0.32);
+  background: rgb(15 23 42 / 0.46);
+  color: #fff;
+}
+
+.headerActionLinkActive {
+  border-color: rgb(96 165 250 / 0.36);
+  color: #fff;
+}
+
+.brandButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.brandButtonChevron {
+  flex: 0 0 auto;
+  color: rgb(191 219 254 / 0.76);
+  transition: transform 200ms ease;
+}
+
+.brandButtonChevronOpen {
+  transform: rotate(180deg);
+}
+
+.brandMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 120;
+  width: min(280px, calc(100vw - 24px));
+  padding: 14px;
+  border: 1px solid rgb(129 140 248 / 0.24);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at top left, rgb(139 92 246 / 0.12), transparent 38%),
+    rgb(2 6 23 / 0.92);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 20px 60px rgb(0 0 0 / 0.38),
+    inset 0 0 24px rgb(255 255 255 / 0.025);
+}
+
+.brandMenuHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brandMenuAvatar {
+  flex: 0 0 auto;
+}
+
+.brandMenuCopy {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.brandMenuName {
+  color: #f8fafc;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.brandMenuSubtitle {
+  color: rgb(191 219 254 / 0.72);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.brandMenuLinks {
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.brandMenuLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid rgb(148 163 184 / 0.12);
+  border-radius: 14px;
+  color: rgb(226 232 240);
+  background: rgb(15 23 42 / 0.34);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.brandMenuLink:hover,
+.brandMenuLink:focus-visible {
+  border-color: rgb(56 189 248 / 0.42);
+  background: rgb(15 23 42 / 0.72);
+  color: #fff;
+}
+
+.brandMenuLinkActive {
+  border-color: rgb(96 165 250 / 0.34);
+  color: #fff;
+}
+
+@media (max-width: 1180px) {
+  .pageHeader {
+    left: 20px;
+    right: 20px;
+    gap: 14px;
+  }
+
+  .brandName {
+    font-size: 0.86rem;
+    letter-spacing: 0.14em;
+  }
+
+  .brandVersion,
+  .headerActionLink {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .readabilityGradient {
+    width: min(56vw, 320px);
+    opacity: 0.86;
+  }
+
+  .pageHeader {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .pageHeaderActions {
+    display: none;
+  }
+
+  .pageHeaderCenter {
+    justify-content: flex-end;
+  }
+
+  .pageBrand {
+    min-width: 0;
+  }
+
+  .brandButton {
+    gap: 8px;
+  }
+
+  .brandCopy {
+    gap: 1px;
+  }
+
+  .brandName {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-overflow: clip;
+    overflow: visible;
+  }
+
+  .brandVersion {
+    display: none;
+  }
+
+  .headerAvatar {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 430px) {
+  .pageHeader {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+  }
+
+  .brandMenu {
+    width: min(280px, calc(100vw - 20px));
+  }
+}
+
+@media (max-width: 360px) {
+  .brandName {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+  }
+
+  .headerAvatar {
+    width: 34px;
+    height: 34px;
+  }
+}
