@@ -110,6 +110,25 @@ Depois, acesse:
 http://localhost:3000
 ```
 
+## ✉️ Envio de contato
+
+O formulario de contato usa `Resend` no backend para enviar mensagens para:
+
+- `luanaeulalia56@gmail.com`
+
+Configuracao necessaria em ambiente local e na Vercel:
+
+```bash
+RESEND_API_KEY=re_xxxxxxxxx
+RESEND_FROM_EMAIL="Portfolio Luana Groth <onboarding@resend.dev>"
+```
+
+Observacoes:
+
+- o destino do e-mail continua sendo `luanaeulalia56@gmail.com`
+- o e-mail preenchido pela pessoa e usado como `Reply-To`
+- para producao, o ideal e substituir `onboarding@resend.dev` por um remetente do seu dominio verificado no Resend
+
 ## ⚙️ Scripts disponíveis
 
 - `npm run dev`: inicia o ambiente de desenvolvimento
