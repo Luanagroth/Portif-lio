@@ -47,6 +47,7 @@
 }
 
 .panel {
+  display: block;
   overflow: hidden;
   border: 1px solid var(--district-color);
   border-radius: 16px;
@@ -56,6 +57,16 @@
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.32),
     0 0 14px color-mix(in srgb, var(--district-color) 14%, transparent);
+}
+
+.panelLink {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.panelLink:focus-visible {
+  outline: none;
 }
 
 .cardHighlighted .panel,
@@ -98,7 +109,9 @@
 .futureLabelContent {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  white-space: nowrap;
   color: #dbe7f5;
   font-size: 0.72rem;
   font-weight: 700;

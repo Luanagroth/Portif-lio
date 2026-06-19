@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Bus,
   Layers3,
@@ -7,6 +8,7 @@ import {
   TowerControl,
   type LucideIcon,
 } from "lucide-react";
+import { getDistrictProjectHref } from "./district-project-links";
 import styles from "./ProjectDistrictCard.module.css";
 import type {
   ActiveDistrictState,
@@ -18,6 +20,9 @@ type ProjectDistrictCardProps = {
   district: District;
   activeDistrict: ActiveDistrictState;
   isKeyboardFocused: boolean;
+  isDesktopNavigationEnabled: boolean;
+  onActivateExpandedDistrict: (districtId: District["id"]) => void;
+  onRequestClose: () => void;
 };
 
 type DistrictCardMode = "static" | "highlighted" | "expanded";
@@ -47,6 +52,9 @@ export function ProjectDistrictCard({
   district,
   activeDistrict,
   isKeyboardFocused,
+  isDesktopNavigationEnabled,
+  onActivateExpandedDistrict,
+  onRequestClose,
 }: ProjectDistrictCardProps) {
   const Icon = DISTRICT_ICONS[district.icon];
   const activeZone =
@@ -74,6 +82,64 @@ export function ProjectDistrictCard({
       ? ACTIVE_EXPANDED_CARD_HEIGHT_PX
       : compactHeight;
   const cardTestId = isFuture ? "future-district-card" : "project-district-card";
+  const projectHref = getDistrictProjectHref(district.id);
+  const isNavigable = Boolean(projectHref) && isDesktopNavigationEnabled;
+
+  const cardContent = (
+    <>
+      {isFuture && futureMode === "label" ? (
+        <div
+          data-testid="future-district-label"
+          className={styles.futureLabelContent}
+          aria-label={`${district.name}: ${district.subtitle}`}
+        >
+          <span className={styles.futureGlyph}>✦</span>
+          <span>Em construção</span>
+        </div>
+      ) : (
+        <>
+          <div className={styles.header}>
+            <div className={styles.iconShell} aria-hidden="true">
+              <Icon size={20} strokeWidth={1.8} />
+            </div>
+            <div className={styles.titleGroup}>
+              <h2 id={`district-card-title-${district.id}`} className={styles.title}>
+                {district.name}
+              </h2>
+              <div className={styles.subtitle}>{district.subtitle}</div>
+            </div>
+          </div>
+
+          <div
+            data-testid="project-district-card-expanded"
+            data-expanded={isExpanded}
+            aria-hidden={!isExpanded}
+            className={styles.expandable}
+          >
+            <div className={styles.expandableInner}>
+              <div className={styles.expandableContent}>
+                <p className={styles.description}>{district.description}</p>
+
+                {isFuture ? null : (
+                  <ul className={styles.highlights}>
+                    {district.highlights.map((highlight) => (
+                      <li
+                        key={`${district.id}-${highlight.value}-${highlight.label}`}
+                        className={styles.highlightItem}
+                      >
+                        <div className={styles.highlightValue}>{highlight.value}</div>
+                        <div className={styles.highlightLabel}>{highlight.label}</div>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+    </>
+  );
 
   return (
     <section
@@ -96,68 +162,23 @@ export function ProjectDistrictCard({
         left: `clamp(${CARD_SIDE_MARGIN_PX}px, calc(${(position.x / MAP_WIDTH) * 100}% - ${cardWidth / 2}px), calc(100% - ${cardWidth}px - ${CARD_SIDE_MARGIN_PX}px))`,
         top: `clamp(var(--city-top-safe-area, ${CARD_TOP_SAFE_AREA_PX}px), calc(${(position.y / MAP_HEIGHT) * 100}% - ${cardHeight / 2}px), calc(100% - ${cardHeight}px - ${CARD_BOTTOM_MARGIN_PX}px))`,
         ["--district-color" as string]: district.color,
-        pointerEvents: "none",
+        pointerEvents: isNavigable ? "auto" : "none",
       }}
     >
-      <div className={styles.panel}>
-        {isFuture && futureMode === "label" ? (
-          <div
-            data-testid="future-district-label"
-            className={styles.futureLabelContent}
-            aria-label={`${district.name}: ${district.subtitle}`}
-          >
-            <span className={styles.futureGlyph}>✦</span>
-            <span>Em construção</span>
-          </div>
-        ) : (
-          <>
-            <div className={styles.header}>
-              <div className={styles.iconShell} aria-hidden="true">
-                <Icon size={20} strokeWidth={1.8} />
-              </div>
-              <div className={styles.titleGroup}>
-                <h2
-                  id={`district-card-title-${district.id}`}
-                  className={styles.title}
-                >
-                  {district.name}
-                </h2>
-                <div className={styles.subtitle}>{district.subtitle}</div>
-              </div>
-            </div>
-
-            <div
-              data-testid="project-district-card-expanded"
-              data-expanded={isExpanded}
-              aria-hidden={!isExpanded}
-              className={styles.expandable}
-            >
-              <div className={styles.expandableInner}>
-                <div className={styles.expandableContent}>
-                  <p className={styles.description}>{district.description}</p>
-
-                  {isFuture ? null : (
-                    <>
-                      <ul className={styles.highlights}>
-                        {district.highlights.map((highlight) => (
-                          <li
-                            key={`${district.id}-${highlight.value}-${highlight.label}`}
-                            className={styles.highlightItem}
-                          >
-                            <div className={styles.highlightValue}>{highlight.value}</div>
-                            <div className={styles.highlightLabel}>{highlight.label}</div>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className={styles.footer}>{"Ver detalhes \u2192"}</div>
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
-          </>
-        )}
-      </div>
+      {isNavigable && projectHref ? (
+        <Link
+          href={projectHref}
+          className={`${styles.panel} ${styles.panelLink}`}
+          aria-label={`Abrir ${district.name} na pagina de projetos`}
+          onMouseEnter={() => onActivateExpandedDistrict(district.id)}
+          onFocus={() => onActivateExpandedDistrict(district.id)}
+          onMouseLeave={onRequestClose}
+        >
+          {cardContent}
+        </Link>
+      ) : (
+        <div className={styles.panel}>{cardContent}</div>
+      )}
     </section>
   );
 }

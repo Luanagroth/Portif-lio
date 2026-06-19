@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useRouter } from "next/navigation";
+import { getDistrictProjectHref } from "./district-project-links";
 import { DistrictLayer } from "./DistrictLayer";
 import styles from "./InteractiveCityLayer.module.css";
 import { LeftPortfolioHud } from "./LeftPortfolioHud";
@@ -11,12 +13,15 @@ import { districts } from "./districts";
 import type { ActiveDistrictState, DistrictId, DistrictZone } from "./district-types";
 
 const CLOSE_DELAY_MS = 140;
+const DESKTOP_BREAKPOINT = "(min-width: 901px)";
 
 export function InteractiveCityLayer() {
+  const router = useRouter();
   const [activeDistrict, setActiveDistrict] = useState<ActiveDistrictState>(null);
   const [focusedDistrictId, setFocusedDistrictId] = useState<DistrictId | null>(null);
   const [hudRoot, setHudRoot] = useState<HTMLElement | null>(null);
   const [mobileProjectRoot, setMobileProjectRoot] = useState<HTMLElement | null>(null);
+  const [isDesktopNavigationEnabled, setIsDesktopNavigationEnabled] = useState(false);
   const closeTimeoutRef = useRef<number | null>(null);
 
   function clearPendingClose() {
@@ -46,6 +51,17 @@ export function InteractiveCityLayer() {
     });
   }
 
+  function navigateToDistrictProject(districtId: DistrictId) {
+    const projectHref = getDistrictProjectHref(districtId);
+
+    if (!projectHref) {
+      return;
+    }
+
+    clearPendingClose();
+    router.push(projectHref);
+  }
+
   useEffect(
     () => () => {
       clearPendingClose();
@@ -60,6 +76,20 @@ export function InteractiveCityLayer() {
     });
   }, []);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia(DESKTOP_BREAKPOINT);
+    const syncDesktopNavigation = () => {
+      setIsDesktopNavigationEnabled(mediaQuery.matches);
+    };
+
+    syncDesktopNavigation();
+    mediaQuery.addEventListener("change", syncDesktopNavigation);
+
+    return () => {
+      mediaQuery.removeEventListener("change", syncDesktopNavigation);
+    };
+  }, []);
+
   const activeDistrictData = activeDistrict
     ? districts.find((district) => district.id === activeDistrict.districtId) ?? null
     : null;
@@ -70,6 +100,9 @@ export function InteractiveCityLayer() {
       district={district}
       activeDistrict={activeDistrict}
       isKeyboardFocused={focusedDistrictId === district.id}
+      isDesktopNavigationEnabled={isDesktopNavigationEnabled}
+      onActivateExpandedDistrict={(districtId) => handleActivateDistrict(districtId, "inner")}
+      onRequestClose={scheduleClose}
     />
   ));
 
@@ -78,8 +111,10 @@ export function InteractiveCityLayer() {
       <DistrictLayer
         activeDistrict={activeDistrict}
         onActivateDistrict={handleActivateDistrict}
+        onNavigateToDistrictProject={navigateToDistrictProject}
         onRequestClose={scheduleClose}
         onFocusDistrictChange={setFocusedDistrictId}
+        isDesktopNavigationEnabled={isDesktopNavigationEnabled}
       />
       <LeftPortfolioHud />
       {hudRoot

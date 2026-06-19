@@ -33,9 +33,26 @@ describe("Home page", () => {
     vi.useRealTimers();
   });
 
+  function mockDesktopLayout() {
+    vi.stubGlobal(
+      "matchMedia",
+      vi.fn((query: string) => ({
+        matches: query === "(min-width: 901px)",
+        media: query,
+        onchange: null,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      })),
+    );
+  }
+
   it("keeps the district cards interactive without the discovery system", async () => {
     vi.useFakeTimers();
     globalThis.__TEST_PATHNAME__ = "/";
+    mockDesktopLayout();
 
     render(<Home />);
 
@@ -221,13 +238,14 @@ describe("Home page", () => {
     );
 
     for (const card of initialProjectCards) {
-      expect(card).toHaveStyle({ pointerEvents: "none" });
+      expect(card).toHaveStyle({ pointerEvents: "auto" });
     }
   });
 
   it("keeps the intro and projects link visible without any discovery persistence", async () => {
     vi.useFakeTimers();
     globalThis.__TEST_PATHNAME__ = "/";
+    mockDesktopLayout();
 
     render(<Home />);
 
@@ -351,7 +369,7 @@ describe("Home page", () => {
       /mova o mapa para ver todos os distritos/i,
     );
 
-    fireEvent.pointerUp(screen.getByTestId("district-inner-atlas"));
+    fireEvent.click(screen.getByTestId("district-inner-atlas"));
 
     const mobileSelectedCard = screen.getByTestId("mobile-selected-project-card");
 

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowUpRight, ChevronDown, ExternalLink } from "lucide-react";
 import { ProjectImageCarousel } from "@/components/project-image-carousel";
 import {
@@ -194,8 +194,9 @@ function ProjectCard({
 
   return (
     <article
+      id={project.slug}
       data-testid={`project-card-${project.slug}`}
-      className={cardClassName}
+      className={`${cardClassName} ${styles.projectAnchorTarget}`}
       style={{ "--project-accent": project.accentColor } as CSSProperties}
     >
       <ProjectPreviewMedia project={project} variant={variant} />
@@ -309,6 +310,36 @@ export function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
   const visibleProjects = projects.filter((project) => matchesProjectFilter(project, activeFilter));
   const mainProjects = visibleProjects.filter((project) => project.section === "main");
   const labProjects = visibleProjects.filter((project) => project.section === "lab");
+
+  useEffect(() => {
+    function scrollToProjectHash() {
+      const projectHash = window.location.hash.slice(1);
+
+      if (!projectHash) {
+        return;
+      }
+
+      const target = document.getElementById(decodeURIComponent(projectHash));
+
+      if (!target) {
+        return;
+      }
+
+      requestAnimationFrame(() => {
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    }
+
+    scrollToProjectHash();
+    window.addEventListener("hashchange", scrollToProjectHash);
+
+    return () => {
+      window.removeEventListener("hashchange", scrollToProjectHash);
+    };
+  }, []);
 
   return (
     <>

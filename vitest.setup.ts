@@ -3,10 +3,16 @@ import { afterEach, beforeAll, vi } from "vitest";
 
 declare global {
   var __TEST_PATHNAME__: string | undefined;
+  var __TEST_ROUTER_PUSH__: ReturnType<typeof vi.fn> | undefined;
 }
+
+globalThis.__TEST_ROUTER_PUSH__ = vi.fn();
 
 vi.mock("next/navigation", () => ({
   usePathname: () => globalThis.__TEST_PATHNAME__ ?? "/",
+  useRouter: () => ({
+    push: globalThis.__TEST_ROUTER_PUSH__ ?? vi.fn(),
+  }),
 }));
 
 const githubRepositoryResponses = new Map([
@@ -108,5 +114,6 @@ beforeAll(() => {
 
 afterEach(() => {
   globalThis.__TEST_PATHNAME__ = "/";
+  globalThis.__TEST_ROUTER_PUSH__ = vi.fn();
   vi.clearAllMocks();
 });

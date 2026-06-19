@@ -13,8 +13,10 @@ const DEBUG_DISTRICTS = false;
 type DistrictLayerProps = {
   activeDistrict: ActiveDistrictState;
   onActivateDistrict: (districtId: DistrictId, zone: DistrictZone) => void;
+  onNavigateToDistrictProject: (districtId: DistrictId) => void;
   onRequestClose: () => void;
   onFocusDistrictChange: (districtId: DistrictId | null) => void;
+  isDesktopNavigationEnabled: boolean;
 };
 
 function getDistrictAriaLabel(district: District, zone: DistrictZone) {
@@ -43,12 +45,6 @@ function handleDistrictBlur(
   onRequestClose();
 }
 
-function preventPendingActions(event: React.KeyboardEvent<SVGPolygonElement>) {
-  if (event.key === "Enter" || event.key === " ") {
-    event.preventDefault();
-  }
-}
-
 function preventPointerFocus(event: React.PointerEvent<SVGPolygonElement>) {
   if (event.pointerType === "touch") {
     return;
@@ -57,11 +53,49 @@ function preventPointerFocus(event: React.PointerEvent<SVGPolygonElement>) {
   event.preventDefault();
 }
 
+function handleDistrictAction(
+  district: District,
+  zone: DistrictZone,
+  onActivateDistrict: (districtId: DistrictId, zone: DistrictZone) => void,
+  onNavigateToDistrictProject: (districtId: DistrictId) => void,
+  isDesktopNavigationEnabled: boolean,
+) {
+  onActivateDistrict(district.id, zone);
+
+  if (district.status === "active" && isDesktopNavigationEnabled) {
+    onNavigateToDistrictProject(district.id);
+  }
+}
+
+function handleDistrictKeyboardAction(
+  event: React.KeyboardEvent<SVGPolygonElement>,
+  district: District,
+  zone: DistrictZone,
+  onActivateDistrict: (districtId: DistrictId, zone: DistrictZone) => void,
+  onNavigateToDistrictProject: (districtId: DistrictId) => void,
+  isDesktopNavigationEnabled: boolean,
+) {
+  if (event.key !== "Enter" && event.key !== " ") {
+    return;
+  }
+
+  event.preventDefault();
+  handleDistrictAction(
+    district,
+    zone,
+    onActivateDistrict,
+    onNavigateToDistrictProject,
+    isDesktopNavigationEnabled,
+  );
+}
+
 export function DistrictLayer({
   activeDistrict,
   onActivateDistrict,
+  onNavigateToDistrictProject,
   onRequestClose,
   onFocusDistrictChange,
+  isDesktopNavigationEnabled,
 }: DistrictLayerProps) {
   const activeDistrictData = activeDistrict
     ? districts.find((district) => district.id === activeDistrict.districtId) ?? null
@@ -136,9 +170,16 @@ export function DistrictLayer({
                   DEBUG_DISTRICTS && isOuterActive ? styles.zoneActiveOuter : "",
                 ].join(" ")}
                 onPointerEnter={() => onActivateDistrict(district.id, "outer")}
-                onPointerUp={() => onActivateDistrict(district.id, "outer")}
-                onClick={() => onActivateDistrict(district.id, "outer")}
                 onPointerDown={preventPointerFocus}
+                onClick={() =>
+                  handleDistrictAction(
+                    district,
+                    "outer",
+                    onActivateDistrict,
+                    onNavigateToDistrictProject,
+                    isDesktopNavigationEnabled,
+                  )
+                }
                 onFocus={() => {
                   onActivateDistrict(district.id, "outer");
                   onFocusDistrictChange(district.id);
@@ -146,7 +187,16 @@ export function DistrictLayer({
                 onBlur={(event) =>
                   handleDistrictBlur(event, onRequestClose, onFocusDistrictChange)
                 }
-                onKeyDown={preventPendingActions}
+                onKeyDown={(event) =>
+                  handleDistrictKeyboardAction(
+                    event,
+                    district,
+                    "outer",
+                    onActivateDistrict,
+                    onNavigateToDistrictProject,
+                    isDesktopNavigationEnabled,
+                  )
+                }
               />
 
               <polygon
@@ -166,9 +216,16 @@ export function DistrictLayer({
                   DEBUG_DISTRICTS && isInnerActive ? styles.zoneActiveInner : "",
                 ].join(" ")}
                 onPointerEnter={() => onActivateDistrict(district.id, "inner")}
-                onPointerUp={() => onActivateDistrict(district.id, "inner")}
-                onClick={() => onActivateDistrict(district.id, "inner")}
                 onPointerDown={preventPointerFocus}
+                onClick={() =>
+                  handleDistrictAction(
+                    district,
+                    "inner",
+                    onActivateDistrict,
+                    onNavigateToDistrictProject,
+                    isDesktopNavigationEnabled,
+                  )
+                }
                 onFocus={() => {
                   onActivateDistrict(district.id, "inner");
                   onFocusDistrictChange(district.id);
@@ -176,7 +233,16 @@ export function DistrictLayer({
                 onBlur={(event) =>
                   handleDistrictBlur(event, onRequestClose, onFocusDistrictChange)
                 }
-                onKeyDown={preventPendingActions}
+                onKeyDown={(event) =>
+                  handleDistrictKeyboardAction(
+                    event,
+                    district,
+                    "inner",
+                    onActivateDistrict,
+                    onNavigateToDistrictProject,
+                    isDesktopNavigationEnabled,
+                  )
+                }
               />
             </g>
           );

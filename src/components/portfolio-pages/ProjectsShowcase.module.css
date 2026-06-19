@@ -137,6 +137,10 @@
     transform 180ms ease;
 }
 
+.projectAnchorTarget {
+  scroll-margin-top: 8rem;
+}
+
 .projectCard::before {
   content: "";
   position: absolute;
